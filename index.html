@@ -157,13 +157,10 @@ h2.ex{
   display:flex;align-items:center;padding:0 8px;overflow:hidden;
   font-size:11px;font-weight:500;color:#fff;text-align:left;white-space:nowrap;
   background:var(--navy);letter-spacing:-.01em;
-  box-shadow:0 0 0 2px var(--surface);
+  box-shadow:0 0 0 3px var(--surface);
 }
 .bar.s1{background:var(--navy)}
-.bar.s1b{background:#2A4A73}
 .bar.s2{background:var(--exec)}
-.bar.s2b{background:#1E5A9C}
-.bar.s2c{background:#6BA3D8;color:var(--navy)}
 .bar.s3{background:var(--navy-3)} .bar.s4{background:var(--navy-4);color:var(--ink)}
 .bar.hold{background:var(--hold);color:var(--navy)}
 .bar.cont::after{content:"";position:absolute;right:6px;width:0;height:0;border-top:4px solid transparent;border-bottom:4px solid transparent;border-left:5px solid currentColor;opacity:.7}
@@ -425,17 +422,17 @@ const LANES = [
   { id: "paid", name: "Paid media" }
 ];
 const TASKS = [
-  { id:"kickoff", name:"Kickoff y accesos", lane:"kick", stage:1, tone:"s1", start:0, dur:1, owner:"Mitu + Escampa", deps:[], unlocks:["med","wh","audit"], co:"", noco:"Campañas nuevas.", note:"Arranca S1. Accesos a GTM, GA4, Ads, Meta, warehouse y usuario de prueba." },
-  { id:"med", name:"Medición", lane:"found", stage:1, tone:"s1", start:1, dur:3, owner:"Medición", deps:["kickoff"], unlocks:["alertas","dash1","camp"], co:"Data warehouse. Auditoría de PM.", noco:"Campañas nuevas antes de S4.", note:"S2 a S4. Eventos, UTMs, consolidación GTM/GA4." },
-  { id:"wh", name:"Data warehouse", lane:"found", stage:1, tone:"s1b", start:1, dur:3, owner:"Data", deps:["kickoff"], unlocks:["alertas","dash1"], co:"Medición. Auditoría de PM.", noco:"Dashboard v1 sin capa de datos.", note:"S2 a S4. Colectar bien." },
-  { id:"audit", name:"Auditoría de PM", lane:"paid", stage:1, tone:"s1", start:1, dur:2, owner:"Agencia", deps:["kickoff"], unlocks:["camp"], co:"Medición y warehouse.", noco:"Scale-up sobre la estructura actual.", note:"Arranca S2, en paralelo a Foundations." },
-  { id:"alertas", name:"Alertas", lane:"rep", stage:2, tone:"s2", start:3, dur:3, owner:"Data", deps:["med","wh"], unlocks:[], co:"Dashboard v1. Primeras campañas.", noco:"", note:"Arranca S4. Fila aparte." },
-  { id:"dash1", name:"Dashboard v1", lane:"rep", stage:2, tone:"s2b", stack:"dash", start:3, dur:3, owner:"Data", deps:["med","wh"], unlocks:["dashit"], co:"Alertas. Primeras campañas.", noco:"", note:"Arranca S4. En S7 sigue iteraciones, misma línea." },
-  { id:"camp", name:"Primeras campañas e iteraciones", lane:"paid", stage:2, tone:"s2", stack:"camp", start:3, dur:5, owner:"Agencia, Mitu al frente", deps:["audit"], unlocks:["escala"], co:"Alertas y dashboard v1. Primeros KPIs.", noco:"Escenarios de escala en S4.", note:"Arranca S4. Escala empieza cuando esto termina." },
-  { id:"dashit", name:"Iteraciones de dashboard", lane:"rep", stage:2, tone:"s2c", stack:"dash", start:6, dur:10, owner:"Data", deps:["dash1"], unlocks:[], co:"Campañas, después escala.", noco:"", note:"S7 a S16. Misma línea que dashboard v1." },
-  { id:"kpi1", name:"Primeros KPIs", lane:"paid", stage:2, tone:"s2c", stack:"kpi", start:6, dur:3, owner:"Mitu + Agencia", deps:["camp","dash1"], unlocks:["kpi2"], co:"Primeras campañas. Iteraciones de dashboard.", noco:"", note:"S7 a S9. Debajo de primeras campañas. En S10 siguen KPIs fundacionales, misma línea." },
-  { id:"kpi2", name:"KPIs fundacionales definidos", lane:"paid", stage:2, tone:"s2", stack:"kpi", start:9, dur:7, owner:"Mitu + Agencia", deps:["kpi1"], unlocks:[], co:"Escenarios de escala. Iteraciones de dashboard.", noco:"", note:"S10 a S16. Misma línea que primeros KPIs." },
-  { id:"escala", name:"Escenarios de escala", lane:"paid", stage:2, tone:"s2b", stack:"camp", start:8, dur:8, owner:"Agencia + Mitu", deps:["camp"], unlocks:[], co:"Iteraciones de dashboard. KPIs fundacionales.", noco:"Solaparse con las primeras campañas.", note:"Arranca después de primeras campañas e iteraciones (S9)." }
+  { id:"kickoff", name:"Kickoff y accesos", lane:"kick", stage:1, start:0, dur:1, owner:"Mitu + Escampa", deps:[], unlocks:["med","wh","audit"], co:"", noco:"Campañas nuevas.", note:"Arranca S1. Accesos a GTM, GA4, Ads, Meta, warehouse y usuario de prueba." },
+  { id:"med", name:"Medición", lane:"found", stage:1, start:1, dur:3, owner:"Medición", deps:["kickoff"], unlocks:["alertas","dash1","camp"], co:"Data warehouse. Auditoría de PM.", noco:"Campañas nuevas antes de S4.", note:"S2 a S4. Eventos, UTMs, consolidación GTM/GA4." },
+  { id:"wh", name:"Data warehouse", lane:"found", stage:1, start:1, dur:3, owner:"Data", deps:["kickoff"], unlocks:["alertas","dash1"], co:"Medición. Auditoría de PM.", noco:"Dashboard v1 sin capa de datos.", note:"S2 a S4. Colectar bien." },
+  { id:"audit", name:"Auditoría de PM", lane:"paid", stage:1, start:1, dur:2, owner:"Agencia", deps:["kickoff"], unlocks:["camp"], co:"Medición y warehouse.", noco:"Scale-up sobre la estructura actual.", note:"Arranca S2, en paralelo a Foundations." },
+  { id:"alertas", name:"Alertas", lane:"rep", stage:2, start:3, dur:3, owner:"Data", deps:["med","wh"], unlocks:[], co:"Dashboard v1. Primeras campañas.", noco:"", note:"Arranca S4. Fila aparte." },
+  { id:"dash1", name:"Dashboard v1", lane:"rep", stage:2, stack:"dash", start:3, dur:3, owner:"Data", deps:["med","wh"], unlocks:["dashit"], co:"Alertas. Primeras campañas.", noco:"", note:"Arranca S4. En S7 sigue iteraciones, misma línea." },
+  { id:"camp", name:"Primeras campañas e iteraciones", lane:"paid", stage:2, stack:"camp", start:3, dur:5, owner:"Agencia, Mitu al frente", deps:["audit"], unlocks:["escala"], co:"Alertas y dashboard v1. Primeros KPIs.", noco:"Escenarios de escala en S4.", note:"Arranca S4. Escala empieza cuando esto termina." },
+  { id:"dashit", name:"Iteraciones de dashboard", lane:"rep", stage:2, stack:"dash", start:6, dur:10, owner:"Data", deps:["dash1"], unlocks:[], co:"Campañas, después escala.", noco:"", note:"S7 a S16. Misma línea que dashboard v1." },
+  { id:"kpi1", name:"Primeros KPIs", lane:"paid", stage:2, stack:"kpi", start:6, dur:3, owner:"Mitu + Agencia", deps:["camp","dash1"], unlocks:["kpi2"], co:"Primeras campañas. Iteraciones de dashboard.", noco:"", note:"S7 a S9. Debajo de primeras campañas. En S10 siguen KPIs fundacionales, misma línea." },
+  { id:"kpi2", name:"KPIs fundacionales definidos", lane:"paid", stage:2, stack:"kpi", start:9, dur:7, owner:"Mitu + Agencia", deps:["kpi1"], unlocks:[], co:"Escenarios de escala. Iteraciones de dashboard.", noco:"", note:"S10 a S16. Misma línea que primeros KPIs." },
+  { id:"escala", name:"Escenarios de escala", lane:"paid", stage:2, stack:"camp", start:8, dur:8, owner:"Agencia + Mitu", deps:["camp"], unlocks:[], co:"Iteraciones de dashboard. KPIs fundacionales.", noco:"Solaparse con las primeras campañas.", note:"Arranca después de primeras campañas e iteraciones (S9)." }
 ];
 
 const byId = Object.fromEntries(TASKS.map(t => [t.id, t]));
@@ -462,7 +459,8 @@ function clip(t){
   if (e <= 0 || s >= n) return null;
   const cs = Math.max(0, s);
   const ce = Math.min(n, e);
-  return { left: (cs / n) * 100, width: ((ce - cs) / n) * 100, cont: e > n + 0.01 };
+  const gap = 0.35;
+  return { left: (cs / n) * 100 + gap, width: Math.max(((ce - cs) / n) * 100 - gap * 2, 0.9), cont: e > n + 0.01 };
 }
 function months(){
   return ["Sep 2026","Oct 2026","Nov 2026","Dic 2026 / ene 2027"];
@@ -500,7 +498,7 @@ function renderGantt(){
     const nRows = Math.max(1, ...packed.map(p => p.rows), 1);
     const h = 16 + nRows * 32;
     const bars = packed.map(({ t, c, row }) => {
-      const cls = [ "bar", t.hold ? "hold" : (t.tone || ("s" + t.stage)), c.cont ? "cont" : "", state.open === t.id ? "on" : "", state.open && state.open !== t.id ? "dim" : "" ].join(" ");
+      const cls = [ "bar", t.hold ? "hold" : "s" + t.stage, c.cont ? "cont" : "", state.open === t.id ? "on" : "", state.open && state.open !== t.id ? "dim" : "" ].join(" ");
       const top = 10 + row * 32;
       return `<button type="button" class="${cls}" data-id="${t.id}" style="left:${c.left}%;width:max(${c.width}%,18px);--top:${top}px" title="${t.name}">${t.name}</button>`;
     }).join("");
