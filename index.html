@@ -97,7 +97,7 @@ h2.ex{
 .fact .v{font-family:"Playfair Display",Georgia,serif;font-size:28px;color:var(--navy);line-height:1}
 .fact .l{margin-top:8px;font-size:12.5px;color:var(--muted);max-width:24ch}
 
-.stages{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--hair);border:1px solid var(--hair);margin-top:8px}
+.stages{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--hair);border:1px solid var(--hair);margin-top:8px}
 .stage{background:var(--surface);padding:22px 20px 24px}
 .stage .idx{font-family:"Geist Mono",ui-monospace,monospace;font-size:11px;color:var(--navy-3)}
 .stage h3{font-size:15.5px;font-weight:600;margin:10px 0 8px;color:var(--navy)}
@@ -293,20 +293,32 @@ td.num{font-family:"Geist Mono",ui-monospace,monospace;font-size:12.5px;white-sp
 
       <section id="secuencia">
         <span class="ex-n">Exhibit 1</span>
-        <h2 class="ex">Dos bloques</h2>
-        <p class="sec-lead">Medición y warehouse en S2 a S4. Dashboard v1 y primeras campañas en S4. Escala después de las campañas e iteraciones.</p>
+        <h2 class="ex">Cuatro etapas</h2>
+        <p class="sec-lead">Medición, data, atribución, reporting, después optimización y escala. El paid actual se mantiene en hold. No se apaga. No se agranda.</p>
         <div class="stages">
           <article class="stage">
             <div class="idx">01</div>
             <h3>Foundations</h3>
-            <p>Medir bien, colectar bien. Medición y data warehouse. En paid, auditoría de lo actual.</p>
-            <div class="when">S2 a S4</div>
+            <p>Tracking, UTMs, limpieza de data, baseline de CRO y un dashboard. Proyecto puntual. Condición de la etapa 2.</p>
+            <div class="when">Semanas 1 a 8</div>
           </article>
           <article class="stage">
             <div class="idx">02</div>
             <h3>Ejecución</h3>
-            <p>Alertas y dashboard v1. En paralelo, primeras campañas e iteraciones. Escenarios de escala después.</p>
-            <div class="when">Desde semana 4</div>
+            <p>Agencia de paid, liderada por Mitu. Reestructura Google y Meta contra aprobación y fondeo. Reunión semanal de performance.</p>
+            <div class="when">Desde semana 7</div>
+          </article>
+          <article class="stage">
+            <div class="idx">03</div>
+            <h3>Internalizar</h3>
+            <p>Entra un Growth Lead de Escampa. Comparte con Mitu los KPIs, el presupuesto y el brief a la agencia. Escampa toma más decisiones.</p>
+            <div class="when">Meses 6 a 12</div>
+          </article>
+          <article class="stage">
+            <div class="idx">04</div>
+            <h3>Squad propio</h3>
+            <p>Equipo interno sobre adquisición, conversión, approval, fondeo y LTV. La agencia cubre picos y trabajo especializado.</p>
+            <div class="when">Desde el mes 12</div>
           </article>
         </div>
       </section>
