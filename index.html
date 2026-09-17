@@ -159,6 +159,10 @@ h2.ex{
   background:var(--navy);letter-spacing:-.01em;
   box-shadow:0 0 0 3px var(--surface);
 }
+.bar.tight{
+  height:auto;min-height:58px;white-space:normal;line-height:1.25;
+  align-items:flex-start;padding:8px 7px;overflow-wrap:anywhere;
+}
 .bar.s1{background:var(--navy)}
 .bar.s2{background:var(--exec)}
 .bar.s3{background:var(--navy-3)} .bar.s4{background:var(--navy-4);color:var(--ink)}
@@ -496,11 +500,13 @@ function renderGantt(){
   const lanes = LANES.map(lane => {
     const packed = pack(TASKS.map(resolved).filter(t => t.lane === lane.id && visible(t)));
     const nRows = Math.max(1, ...packed.map(p => p.rows), 1);
-    const h = 16 + nRows * 32;
+    const rowH = packed.some(p => p.t.dur <= 1) ? 72 : 32;
+    const h = 16 + nRows * rowH;
     const bars = packed.map(({ t, c, row }) => {
-      const cls = [ "bar", t.hold ? "hold" : "s" + t.stage, c.cont ? "cont" : "", state.open === t.id ? "on" : "", state.open && state.open !== t.id ? "dim" : "" ].join(" ");
-      const top = 10 + row * 32;
-      return `<button type="button" class="${cls}" data-id="${t.id}" style="left:${c.left}%;width:max(${c.width}%,18px);--top:${top}px" title="${t.name}">${t.name}</button>`;
+      const tight = t.dur <= 1;
+      const cls = [ "bar", t.hold ? "hold" : "s" + t.stage, tight ? "tight" : "", c.cont ? "cont" : "", state.open === t.id ? "on" : "", state.open && state.open !== t.id ? "dim" : "" ].join(" ");
+      const top = 10 + row * rowH;
+      return `<button type="button" class="${cls}" data-id="${t.id}" style="left:${c.left}%;width:${c.width}%;--top:${top}px" title="${t.name}">${t.name}</button>`;
     }).join("");
     const gl = `<div class="gridlines" style="grid-template-columns:repeat(${n},1fr)">${"<span></span>".repeat(n)}</div>`;
     return `<div class="lane"><div class="lane-name">${lane.name}</div><div class="track" style="min-height:${h}px">${gl}${bars}</div></div>`;
