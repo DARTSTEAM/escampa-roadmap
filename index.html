@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Escampa · Roadmap de growth</title>
+<meta name="description" content="Gantt de kickoff: cuatro etapas, dependencias, convivencia y ballpark de costos. Foundations primero; ejecución después." />
+<meta name="theme-color" content="#0F2344" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --navy:#0F2344;
+  --navy-2:#1B365D;
+  --navy-3:#3D5A80;
+  --navy-4:#7A8BA3;
+  --ink:#0A162B;
+  --muted:#5A6573;
+  --faint:#8B95A3;
+  --paper:#F3F4F6;
+  --surface:#FFFFFF;
+  --hair:rgba(15,35,68,.10);
+  --hair-2:rgba(15,35,68,.18);
+  --hold:#C5B48A;
+  --crit:#0F2344;
+  --rail:220px;
+  --drawer:380px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:Inter,system-ui,sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  font-weight:400;
+}
+::selection{background:rgba(15,35,68,.14)}
+button,select{font-family:inherit}
+a{color:inherit}
+
+.shell{display:flex;min-height:100vh}
+.rail{
+  width:var(--rail);flex-shrink:0;position:sticky;top:0;height:100vh;
+  border-right:1px solid var(--hair);padding:28px 22px;
+  display:flex;flex-direction:column;background:var(--paper);
+}
+.rail .mark{
+  font-family:"Playfair Display",Georgia,serif;
+  font-size:20px;letter-spacing:-.02em;color:var(--navy);
+}
+.rail .sub{
+  margin-top:6px;font-size:10px;font-weight:600;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--faint);
+}
+.nav{margin-top:36px;display:flex;flex-direction:column;gap:2px}
+.nav a{
+  display:flex;align-items:baseline;gap:10px;padding:8px 0;
+  font-size:12.5px;color:var(--muted);text-decoration:none;border-bottom:1px solid transparent;
+}
+.nav a .n{font-family:"Geist Mono",ui-monospace,monospace;font-size:10px;color:var(--faint);width:18px}
+.nav a:hover,.nav a.active{color:var(--navy)}
+.nav a.active{font-weight:600}
+.rail-foot{margin-top:auto;font-size:11px;color:var(--faint);line-height:1.45}
+.rail-foot b{display:block;color:var(--muted);font-weight:600;margin-bottom:4px}
+
+.main{flex:1;min-width:0;padding:0 0 80px}
+.wrap{width:min(1120px,calc(100% - 72px));margin:0 auto}
+
+section{padding:64px 0 8px;scroll-margin-top:24px}
+section + section{border-top:1px solid var(--hair)}
+.kicker{
+  font-size:10.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--navy-3);
+}
+h1,h2.ex,h3{letter-spacing:-.03em}
+h1{
+  font-family:"Playfair Display",Georgia,serif;
+  font-weight:400;font-size:clamp(34px,4.6vw,52px);line-height:1.18;
+  margin:18px 0 16px;max-width:18ch;color:var(--navy);
+}
+h1 em{font-style:italic;color:var(--navy-2)}
+.lead{font-size:16.5px;font-weight:300;color:var(--muted);max-width:62ch;line-height:1.65}
+h2.ex{
+  font-family:"Playfair Display",Georgia,serif;
+  font-weight:400;font-size:clamp(26px,3vw,36px);margin:10px 0 12px;color:var(--navy);
+}
+.ex-n{font-family:"Geist Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.14em;color:var(--faint);display:block;margin-bottom:8px}
+.sec-lead{font-size:15px;color:var(--muted);max-width:62ch;margin-bottom:28px;font-weight:300}
+
+.hero{padding:48px 0 28px;border-top:none}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:36px;border-top:1px solid var(--hair)}
+.fact{padding:18px 20px 4px 0;border-right:1px solid var(--hair)}
+.fact:last-child{border-right:none;padding-right:0}
+.fact .v{font-family:"Playfair Display",Georgia,serif;font-size:28px;color:var(--navy);line-height:1}
+.fact .l{margin-top:8px;font-size:12.5px;color:var(--muted);max-width:24ch}
+
+.stages{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--hair);border:1px solid var(--hair);margin-top:8px}
+.stage{background:var(--surface);padding:22px 20px 24px}
+.stage .idx{font-family:"Geist Mono",ui-monospace,monospace;font-size:11px;color:var(--navy-3)}
+.stage h3{font-size:15.5px;font-weight:600;margin:10px 0 8px;color:var(--navy)}
+.stage p{font-size:13px;color:var(--muted);font-weight:300;line-height:1.5}
+.stage .when{margin-top:14px;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--navy)}
+
+/* Gantt */
+.toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-bottom:16px}
+.seg{display:inline-flex;border:1px solid var(--hair-2);background:var(--surface)}
+.seg button{
+  appearance:none;border:0;background:transparent;cursor:pointer;
+  padding:8px 14px;font-size:12px;font-weight:500;color:var(--muted);
+}
+.seg button[aria-pressed="true"]{background:var(--navy);color:#fff}
+.legend{display:flex;flex-wrap:wrap;gap:12px 16px;margin-left:auto;font-size:11.5px;color:var(--muted);align-items:center}
+.legend span{display:inline-flex;align-items:center;gap:6px;flex:0 0 auto;white-space:nowrap}
+.swatch{display:block;width:14px;height:8px;flex:0 0 14px}
+.swatch.c1{background:var(--navy)} .swatch.c2{background:var(--navy-2)} .swatch.c3{background:var(--navy-3)} .swatch.c4{background:var(--navy-4)} .swatch.ch{background:var(--hold)}
+
+.filters{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.filters button{
+  appearance:none;border:1px solid var(--hair-2);background:var(--surface);cursor:pointer;
+  padding:5px 10px;font-size:11.5px;color:var(--muted);
+}
+.filters button[aria-pressed="true"]{border-color:var(--navy);color:var(--navy);font-weight:600}
+
+.gantt-shell{
+  position:relative;background:var(--surface);border:1px solid var(--hair);
+  overflow:auto;max-height:min(78vh,820px);
+}
+.gantt{min-width:920px;--lane:156px;--row:52px;--bar-h:26px}
+.head,.lane{display:grid;grid-template-columns:var(--lane) 1fr}
+.head{position:sticky;top:0;z-index:3;background:var(--surface);border-bottom:1px solid var(--hair)}
+.corner{position:sticky;left:0;z-index:4;background:var(--surface);border-right:1px solid var(--hair);padding:10px 12px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);font-weight:700}
+.cols{position:relative;min-height:64px}
+.bands{position:absolute;inset:0 0 28px 0;display:flex;pointer-events:none}
+.band{display:flex;align-items:flex-start;padding:6px 8px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);opacity:.85;overflow:hidden;white-space:nowrap}
+.band.s1{background:rgba(15,35,68,.06)} .band.s2{background:rgba(27,54,93,.08)} .band.s3{background:rgba(61,90,128,.10)} .band.s4{background:rgba(122,139,163,.12)}
+.ticks{position:absolute;left:0;right:0;bottom:0;display:grid;height:28px;border-top:1px solid var(--hair)}
+.tick{font-family:"Geist Mono",ui-monospace,monospace;font-size:10px;color:var(--faint);padding:6px 6px 0;border-left:1px solid var(--hair)}
+.tick:first-child{border-left:0}
+
+.lane{border-bottom:1px solid var(--hair)}
+.lane:last-child{border-bottom:0}
+.lane-name{
+  position:sticky;left:0;z-index:2;background:var(--surface);border-right:1px solid var(--hair);
+  padding:18px 12px 10px;font-size:12.5px;font-weight:600;color:var(--navy);display:flex;align-items:flex-start;
+}
+.track{position:relative;min-height:var(--row)}
+.gridlines{position:absolute;inset:0;display:grid;pointer-events:none}
+.gridlines span{border-left:1px solid var(--hair)}
+.gridlines span:first-child{border-left:0}
+
+.bar{
+  position:absolute;top:var(--top,12px);height:var(--bar-h,26px);border:0;cursor:pointer;
+  display:flex;align-items:center;padding:0 8px;overflow:hidden;
+  font-size:11px;font-weight:500;color:#fff;text-align:left;white-space:nowrap;
+  background:var(--navy);letter-spacing:-.01em;
+}
+.bar.s1{background:var(--navy)} .bar.s2{background:var(--navy-2)} .bar.s3{background:var(--navy-3)} .bar.s4{background:var(--navy-4);color:var(--ink)}
+.bar.hold{background:var(--hold);color:var(--navy)}
+.bar.cont::after{content:"";position:absolute;right:6px;width:0;height:0;border-top:4px solid transparent;border-bottom:4px solid transparent;border-left:5px solid currentColor;opacity:.7}
+.bar:hover,.bar:focus-visible{outline:2px solid var(--ink);outline-offset:1px;z-index:1}
+.bar.dim{opacity:.22}
+.bar.on{outline:2px solid var(--ink);outline-offset:1px;z-index:1}
+
+.hint{margin-top:10px;font-size:12px;color:var(--faint)}
+
+.drawer{
+  position:fixed;top:0;right:0;height:100vh;width:min(var(--drawer),100%);
+  background:var(--surface);border-left:1px solid var(--hair-2);
+  z-index:20;transform:translateX(100%);transition:transform .28s ease;
+  padding:28px 28px 40px;overflow:auto;
+}
+.drawer.open{transform:none}
+.drawer h3{font-size:20px;font-weight:600;color:var(--navy);margin:8px 0 6px;letter-spacing:-.03em}
+.drawer .meta{font-size:12px;color:var(--muted);margin-bottom:18px}
+.drawer dl{display:grid;gap:14px}
+.drawer dt{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:4px}
+.drawer dd{font-size:13.5px;color:var(--ink);font-weight:300;line-height:1.5}
+.x{
+  appearance:none;border:1px solid var(--hair-2);background:transparent;cursor:pointer;
+  width:32px;height:32px;font-size:18px;line-height:1;color:var(--navy);float:right;
+}
+.scrim{position:fixed;inset:0;background:rgba(10,22,43,.28);z-index:19;opacity:0;pointer-events:none;transition:opacity .28s}
+.scrim.on{opacity:1;pointer-events:auto}
+
+.list{display:none}
+@media(max-width:900px){
+  .rail{display:none}
+  .wrap{width:calc(100% - 36px)}
+  .facts,.stages{grid-template-columns:1fr}
+  .fact,.stage{border-right:0;border-bottom:1px solid var(--hair)}
+  .gantt-shell{display:none}
+  .list{display:block}
+  .legend{margin-left:0}
+  h1{max-width:none}
+}
+
+.card-list{display:flex;flex-direction:column;gap:8px}
+.item{background:var(--surface);border:1px solid var(--hair);padding:14px 16px;text-align:left;width:100%;cursor:pointer}
+.item .t{font-weight:600;font-size:14px;color:var(--navy)}
+.item .s{font-size:12px;color:var(--muted);margin-top:4px}
+.lane-h{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin:18px 0 8px}
+
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th,td{padding:11px 12px;border-bottom:1px solid var(--hair);text-align:left;vertical-align:top}
+th{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);font-weight:700}
+td.num{font-family:"Geist Mono",ui-monospace,monospace;font-size:12.5px;white-space:nowrap}
+.yes{color:var(--navy);font-weight:600} .no{color:#8A3B3B}
+
+.choice{display:grid;grid-template-columns:1.4fr .8fr .8fr;gap:1px;background:var(--hair);border:1px solid var(--hair)}
+.ch{background:var(--surface);padding:22px}
+.ch.pick{background:var(--navy);color:#E8EEF6}
+.ch.pick p,.ch.pick .tag{color:#C5D0DE}
+.ch h3{font-size:16px;margin:8px 0 10px}
+.ch p{font-size:13.5px;color:var(--muted);font-weight:300}
+.ch .tag{font-family:"Geist Mono",ui-monospace,monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--navy-3)}
+.ch ul{margin-top:12px;padding-left:16px;font-size:13px;color:inherit;font-weight:300}
+.ch.pick ul{color:#E8EEF6}
+@media(max-width:800px){.choice{grid-template-columns:1fr}}
+
+.cost{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--hair);border:1px solid var(--hair)}
+.cost > div{background:var(--surface);padding:26px}
+.cost .amt{font-family:"Playfair Display",Georgia,serif;font-size:32px;color:var(--navy);margin:8px 0 6px}
+.cost .sub{font-size:13px;color:var(--muted);font-weight:300}
+@media(max-width:800px){.cost{grid-template-columns:1fr}}
+.fine{margin-top:16px;font-size:12.5px;color:var(--faint);max-width:72ch}
+
+.next{counter-reset:st;display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.next li{list-style:none;padding-top:8px}
+.next li::before{
+  counter-increment:st;content:counter(st, decimal-leading-zero);
+  font-family:"Geist Mono",ui-monospace,monospace;font-size:11px;color:var(--navy-3);display:block;margin-bottom:8px;
+}
+.next h3{font-size:15px;margin-bottom:6px;color:var(--navy)}
+.next p{font-size:13px;color:var(--muted);font-weight:300}
+@media(max-width:800px){.next{grid-template-columns:1fr 1fr}}
+
+.foot{margin-top:72px;padding:28px 0;border-top:1px solid var(--hair);font-size:12px;color:var(--faint);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media print{
+  .rail,.toolbar,.filters,.drawer,.scrim,.hint{display:none!important}
+  .gantt-shell{max-height:none;overflow:visible}
+  .main{padding:0}
+  .wrap{width:100%}
+  body{background:#fff}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *{transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="rail">
+    <div class="mark">Escampa</div>
+    <div class="sub">Roadmap de growth</div>
+    <nav class="nav">
+      <a href="#principio"><span class="n">01</span>Principio</a>
+      <a href="#gantt"><span class="n">02</span>Gantt</a>
+      <a href="#etapas"><span class="n">03</span>Etapas</a>
+      <a href="#convivencia"><span class="n">04</span>Convivencia</a>
+      <a href="#agencia"><span class="n">05</span>Agencia</a>
+      <a href="#costos"><span class="n">06</span>Costos</a>
+      <a href="#decision"><span class="n">07</span>Decisión</a>
+    </nav>
+    <div class="rail-foot">
+      <b>Kickoff posible</b>
+      Semana del 21 de septiembre de 2026. CEO y COO deciden; no hay comité.
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="wrap">
+      <header class="hero" id="principio">
+        <p class="kicker">Septiembre 2026 · documento de kickoff</p>
+        <h1>Antes de escalar la inversión, <em>hay que poder medirla.</em></h1>
+        <p class="lead">El paid media actual no escala: sin data limpia, sin infraestructura y sin un tablero que cierre el funnel. Foundations va primero. La ejecución operativa arranca cuando las señales de negocio existen, no antes.</p>
+        <div class="facts">
+          <div class="fact"><div class="v">4</div><div class="l">Etapas. Foundations no se mezcla con la primera ejecución.</div></div>
+          <div class="fact"><div class="v">8–10</div><div class="l">Semanas de proyecto para tracking, UTMs, data y tableros.</div></div>
+          <div class="fact"><div class="v">+4 sem</div><div class="l">Si la agencia entra a due diligence, el Gantt se corre. Ya pasó con CleverTap.</div></div>
+        </div>
+      </header>
+
+      <section id="secuencia">
+        <span class="ex-n">Exhibit 1</span>
+        <h2 class="ex">La secuencia es la estrategia.</h2>
+        <p class="sec-lead">Medición → data → atribución → reporting → optimización → escala. Invertir más sobre un funnel que no se lee es pagar para no aprender. El paid de hoy se sostiene; no se apaga y no se agranda.</p>
+        <div class="stages">
+          <article class="stage">
+            <div class="idx">01</div>
+            <h3>Foundations</h3>
+            <p>Tracking, UTMs, limpieza de data, CRO de baseline y un dashboard único. Proyecto puntual. Condición de todo lo que sigue.</p>
+            <div class="when">Semanas 1–8</div>
+          </article>
+          <article class="stage">
+            <div class="idx">02</div>
+            <h3>Ejecución</h3>
+            <p>Agencia especializada, liderada por Mitu. Reestructura Google y Meta sobre señales finales. Cadencia semanal de performance.</p>
+            <div class="when">Desde semana 7</div>
+          </article>
+          <article class="stage">
+            <div class="idx">03</div>
+            <h3>Internalizar</h3>
+            <p>Entra un Growth Lead interno. Co-own con Mitu: KPIs, presupuesto y el brief a la agencia. Escampa empieza a mandar.</p>
+            <div class="when">Meses 6–12</div>
+          </article>
+          <article class="stage">
+            <div class="idx">04</div>
+            <h3>Squad propio</h3>
+            <p>Capacidad interna sobre adquisición → conversión → approval → fondeo → LTV. La agencia queda como especialista, no como dueña.</p>
+            <div class="when">Mes 12 en adelante</div>
+          </article>
+        </div>
+      </section>
+
+      <section id="gantt">
+        <span class="ex-n">Exhibit 2</span>
+        <h2 class="ex">Gantt: tareas, dependencias y lo que convive.</h2>
+        <p class="sec-lead">Dos escalas. Doce semanas para el arranque; dieciocho meses para la capacidad interna. El interruptor de agencia corre la ejecución cuatro semanas si hay RFP. Clic en una barra para ver dueño, predecesoras y qué puede correr en paralelo.</p>
+
+        <div class="toolbar">
+          <div class="seg" role="group" aria-label="Escala de tiempo">
+            <button type="button" id="btn-weeks" aria-pressed="true">12 semanas</button>
+            <button type="button" id="btn-months" aria-pressed="false">18 meses</button>
+          </div>
+          <div class="seg" role="group" aria-label="Camino de agencia">
+            <button type="button" id="btn-abn" aria-pressed="true">ABN ahora</button>
+            <button type="button" id="btn-rfp" aria-pressed="false">RFP +4 sem</button>
+          </div>
+          <div class="legend">
+            <span><span class="swatch c1"></span>Foundations</span>
+            <span><span class="swatch c2"></span>Ejecución</span>
+            <span><span class="swatch c3"></span>Internalizar</span>
+            <span><span class="swatch c4"></span>Squad</span>
+            <span><span class="swatch ch"></span>Hold</span>
+          </div>
+        </div>
+        <div class="filters" id="filters"></div>
+        <div class="gantt-shell" id="gantt-shell"></div>
+        <div class="list" id="list"></div>
+        <p class="hint">Semana 1 = 21–27 sep 2026. La línea de hold es el paid actual: sigue prendido, no se escala. Las barras que siguen más allá del recorte de 12 semanas llevan flecha.</p>
+      </section>
+
+      <section id="etapas">
+        <span class="ex-n">Exhibit 3</span>
+        <h2 class="ex">Qué entra en cada etapa.</h2>
+        <p class="sec-lead">Foundations es el único bloque que se cotiza como proyecto. Lo demás es ongoing, hiring interno, o las dos cosas.</p>
+        <table>
+          <thead>
+            <tr><th>Etapa</th><th>Trabajo</th><th>Dueño</th><th>Hito que desbloquea la siguiente</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>01 Foundations</td>
+              <td>Inventario y freeze de tags (hoy: tres GTM, tres GA4, dos pixels). Taxonomía de eventos campaña → aprobación → fondeo. UTMs y CRM. Consolidación GTM/GA4. Consentimiento entre dominios. Limpieza de data. Diccionario de KPIs. Dashboard v1 y v2. Baseline de CRO. QA con usuario de prueba hasta fondeo.</td>
+              <td>Equipo de data / medición, con Mitu priorizando</td>
+              <td>QA end-to-end en verde y conversiones de negocio mapeadas a Google y Meta</td>
+            </tr>
+            <tr>
+              <td>02 Ejecución</td>
+              <td>Onboarding de agencia. Reestructura de campañas sobre señales finales. Cadencia semanal. Experimentación paid y primeros tests CRO. Escala controlada cuando hay dos o tres semanas de señal limpia.</td>
+              <td>Agencia, liderada por Mitu</td>
+              <td>Ritual de performance funcionando sobre el dashboard, no sobre capturas de Ads Manager</td>
+            </tr>
+            <tr>
+              <td>03 Internalizar</td>
+              <td>Perfil, búsqueda e incorporación del Growth Lead. Co-own con Mitu de KPIs, presupuesto y roadmap. El lead gestiona y desafía a la agencia. Alineación Marketing, Producto, Data y Tech.</td>
+              <td>Growth Lead + Mitu + agencia</td>
+              <td>El lead interno corre el ritual y el backlog sin que Mitu tenga que estar en cada decisión táctica</td>
+            </tr>
+            <tr>
+              <td>04 Squad</td>
+              <td>Contratación gradual: paid/analyst, CRO, UX, data, martech, creative. Un backlog sobre adquisición → retención. Escampa lidera. La agencia queda para picos y especialidad.</td>
+              <td>Escampa</td>
+              <td>Ownership interno del sistema, no de un canal</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="convivencia">
+        <span class="ex-n">Exhibit 4</span>
+        <h2 class="ex">Qué convive, y qué no.</h2>
+        <p class="sec-lead">Foundations no exige apagar el negocio. Exige no fingir que ya se puede optimizar.</p>
+        <table>
+          <thead>
+            <tr><th>Durante Foundations (sem. 1–8)</th><th>Puede convivir</th><th>No convive</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Paid actual</td><td class="yes">Sí: hold. Misma inversión, higiene mínima, sin scale-up.</td><td class="no">Escalar presupuesto. Reestructurar bidding sobre last-click o vanity.</td></tr>
+            <tr><td>Agencia</td><td class="yes">Sí: decisión en semana 1 y onboarding. Entran a leer el sistema, no a gastar más.</td><td class="no">Campaña nueva “grande” antes del QA de medición.</td></tr>
+            <tr><td>Data y tableros</td><td class="yes">Sí: limpieza y KPI dictionary en paralelo al tagging.</td><td class="no">Dashboard como fuente de verdad antes de que los eventos existan.</td></tr>
+            <tr><td>CRO</td><td class="yes">Sí: hipótesis y baseline apenas hay funnel leíble.</td><td class="no">Tests de conversión que necesitan atribución limpia, en las primeras semanas.</td></tr>
+            <tr><td>Organización</td><td class="yes">Sí: perfil del Growth Lead hacia el final de Foundations.</td><td class="no">Armar el squad de siete personas en el mes 1.</td></tr>
+            <tr><td>Due diligence de agencia</td><td class="yes">Se puede. El Gantt tiene el escenario.</td><td class="no">Kickoff la semana que viene y RFP al mismo tiempo. Son caminos distintos.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="agencia">
+        <span class="ex-n">Exhibit 5</span>
+        <h2 class="ex">La agencia es una decisión, no un proceso.</h2>
+        <p class="sec-lead">Mitu ya tiene candidata: ABN. Escampa es chica, pagan en moneda dura y quieren ver movimiento. Un RFP de tres agencias suma un mes. Lo vivieron con CleverTap. Abajo, la elección y el costo de no hacerla.</p>
+        <div class="choice">
+          <article class="ch pick">
+            <div class="tag">Recomendado</div>
+            <h3>ABN, con Mitu al frente</h3>
+            <p>Se nombra la agencia en el kickoff. Onboarding en semanas 2–3, en paralelo a Foundations. La reestructura de campañas espera al QA; el equipo no espera a un concurso de agencias.</p>
+            <ul>
+              <li>Candidata ya nombrada por quien va a liderarla.</li>
+              <li>Conoce el stack: la auditoría del 16 de septiembre dejó tres GTM, tres GA4 y dos pixels en el mismo pageview.</li>
+              <li>Kickoff la semana del 21 de septiembre. Sin comité de por medio.</li>
+            </ul>
+          </article>
+          <article class="ch">
+            <div class="tag">Alternativa</div>
+            <h3>RFP de tres agencias</h3>
+            <p>Due diligence de un mes. El Gantt de ejecución se corre cuatro semanas. Foundations puede arrancar igual; el paid reestructurado no.</p>
+          </article>
+          <article class="ch">
+            <div class="tag">Si hace falta opción</div>
+            <h3>ABN a 90 días, con salida</h3>
+            <p>Misma velocidad que la recomendada. Cláusula de salida a los tres meses si el fit no está. Evita el mes perdido sin dejar a Escampa atada.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="costos">
+        <span class="ex-n">Exhibit 6</span>
+        <h2 class="ex">Ballpark, no cotización.</h2>
+        <p class="sec-lead">Dos líneas, como pidió el negocio: un proyecto para Foundations, un ongoing para iterar y ejecutar paid. Cifras de orden de magnitud para decidir. La cotización formal sale en la reunión de detalle. Media buy, nube y sueldos internos van aparte.</p>
+        <div class="cost">
+          <div>
+            <div class="kicker">Proyecto · Foundations</div>
+            <div class="amt">USD 22–32k</div>
+            <p class="sub">Ocho a diez semanas. Tracking y consolidación GTM/GA4, UTMs y CRM, limpieza, diccionario de KPIs, dashboards v1/v2, baseline de CRO, QA hasta fondeo. Un pago de proyecto, no un retainer disfrazado.</p>
+          </div>
+          <div>
+            <div class="kicker">Ongoing · ejecución paid</div>
+            <div class="amt">USD 5–8k / mes</div>
+            <p class="sub">Retainer de agencia a partir de la etapa 2. Cubre operatoria, iteración y el ritual semanal. El media spend lo paga Escampa directo a las plataformas. Cloud y APIs, factura aparte, se estiman cuando el setup existe.</p>
+          </div>
+        </div>
+        <p class="fine">Fuera de este ballpark: honorarios de Mitu (relación vigente), salario del Growth Lead (mes 6, payroll Escampa), el squad (mes 12), e IVA u otros impuestos. Los rangos asumen complejidad de fintech de crédito con dos dominios (escampa.mx y solicitud.escampa.mx) y el estado de medición relevado el 16 de septiembre. No son un fee cerrado.</p>
+      </section>
+
+      <section id="decision">
+        <span class="ex-n">Exhibit 7</span>
+        <h2 class="ex">Para salir de la reunión con fecha.</h2>
+        <ol class="next">
+          <li>
+            <h3>Nombrar la agencia</h3>
+            <p>ABN ahora, ABN a 90 días, o RFP. Esa sola marca mueve el Gantt.</p>
+          </li>
+          <li>
+            <h3>Abrir Foundations</h3>
+            <p>Acceso a GTM, GA4, Ads, Meta y un usuario de prueba que llegue a fondeo. Sin eso, la semana 1 es teatro.</p>
+          </li>
+          <li>
+            <h3>Kickoff 21 de septiembre</h3>
+            <p>Cadencia, dueños y el freeze de tags. CEO y COO alcanzan. No hay que esperar a nadie más.</p>
+          </li>
+          <li>
+            <h3>Cotización de detalle</h3>
+            <p>Se parte de este ballpark. Proyecto de Foundations cerrado; retainer de ejecución con fecha de arranque.</p>
+          </li>
+        </ol>
+        <div class="foot">
+          <div>Escampa · roadmap de growth · septiembre 2026</div>
+          <div>Válido como base de kickoff por 30 días</div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <button class="x" type="button" id="close" aria-label="Cerrar">×</button>
+  <div class="kicker" id="d-stage"></div>
+  <h3 id="d-title"></h3>
+  <p class="meta" id="d-meta"></p>
+  <dl>
+    <div><dt>Dueño</dt><dd id="d-owner"></dd></div>
+    <div><dt>Depende de</dt><dd id="d-deps"></dd></div>
+    <div><dt>Desbloquea</dt><dd id="d-unlocks"></dd></div>
+    <div><dt>Convive con</dt><dd id="d-co"></dd></div>
+    <div><dt>No convive con</dt><dd id="d-noco"></dd></div>
+    <div><dt>Nota</dt><dd id="d-note"></dd></div>
+  </dl>
+</aside>
+<div class="scrim" id="scrim"></div>
+
+<script>
+const WEEK0 = new Date(2026, 8, 21);
+const LANES = [
+  { id: "gov", name: "Gobierno" },
+  { id: "med", name: "Medición" },
+  { id: "data", name: "Data y tableros" },
+  { id: "cro", name: "CRO" },
+  { id: "paid", name: "Paid media" },
+  { id: "org", name: "Organización" }
+];
+const TASKS = [
+  { id:"kickoff", name:"Kickoff", lane:"gov", stage:1, start:0, dur:1, owner:"Mitu + Escampa", deps:[], unlocks:["cadencia","inventario","kpis"], co:"Decisión de agencia. Freeze de tags.", noco:"Esperar un comité.", note:"Semana del 21 de septiembre. Alcance, dueños y cadencia. Sin este hito el resto es un PowerPoint." },
+  { id:"cadencia", name:"Cadencia semanal Mitu", lane:"gov", stage:1, start:0, dur:72, owner:"Mitu", deps:["kickoff"], unlocks:["ritual"], co:"Todas las etapas. Es el riel, no un proyecto.", noco:"Reuniones ad hoc cuando hay incendio.", note:"Prioriza el roadmap y sostiene que la ejecución responda al negocio, no al canal." },
+  { id:"ritual", name:"Ritual de performance", lane:"gov", stage:2, start:6, dur:66, owner:"Mitu + agencia", deps:["dash1"], unlocks:["exp-paid","escala"], co:"Dashboard v1. Paid en reestructura.", noco:"Mirar solo Ads Manager o un Excel suelto.", note:"Arranca cuando hay un tablero, no antes. Semanal, sobre KPIs de negocio." },
+  { id:"inventario", name:"Inventario y freeze de tags", lane:"med", stage:1, start:0, dur:2, owner:"Medición", deps:["kickoff"], unlocks:["gtm"], co:"Taxonomía de eventos. Paid en hold.", noco:"Sumar más contenedores “por las dudas”.", note:"El 16 de septiembre había tres GTM, tres GA4 y dos pixels de Meta en solicitud.escampa.mx. Primero se deja de sangrar." },
+  { id:"taxonomia", name:"Taxonomía campaña → fondeo", lane:"med", stage:1, start:0, dur:3, owner:"Medición + producto", deps:["kickoff"], unlocks:["utm","qa"], co:"Diccionario de KPIs. Inventario de tags.", noco:"Eventos de vanidad (pageview, clic) como KPI.", note:"El hilo que importa: campaña → solicitud → aprobación → fondeo. Si no se nombra acá, no se mide después." },
+  { id:"utm", name:"UTMs y mapeo a CRM", lane:"med", stage:1, start:1, dur:3, owner:"Medición", deps:["taxonomia"], unlocks:["qa"], co:"Consolidación GTM. Limpieza de data.", noco:"Cada campaña inventando parámetros.", note:"Estándar único, persistencia entre escampa.mx y solicitud.escampa.mx, y el puente al CRM." },
+  { id:"gtm", name:"Consolidar GTM / GA4", lane:"med", stage:1, start:1, dur:4, owner:"Medición", deps:["inventario"], unlocks:["consent","qa"], co:"UTMs. Paid en hold.", noco:"Tres propiedades “por equipo”.", note:"De tres a uno. Lo que no se usa se apaga, no se archiva en la cabeza de alguien." },
+  { id:"consent", name:"Consentimiento cross-domain", lane:"med", stage:1, start:2, dur:3, owner:"Medición + legal", deps:["gtm"], unlocks:["qa"], co:"Consolidación de tags.", noco:"Disparar marketing en solicitud sin CMP.", note:"Hoy el banner vive en el dominio de contenido y la app de solicitud dispara igual. Sin esto, la atribución se rompe en el paso que importa." },
+  { id:"qa", name:"QA end-to-end hasta fondeo", lane:"med", stage:1, start:4, dur:2, owner:"Medición + producto", deps:["taxonomia","utm","gtm","consent"], unlocks:["conv","cro-base","dash2"], co:"Dashboard v1 en construcción.", noco:"Escala de paid. CRO con atribución.", note:"Un usuario de prueba recorre KYC, oferta, contrato y depósito. Si el evento no sale, la etapa 2 no arranca en serio." },
+  { id:"conv", name:"Conversiones finales en Google / Meta", lane:"med", stage:1, start:5, dur:2, owner:"Medición + agencia", deps:["qa"], unlocks:["reest"], co:"Onboarding de agencia.", noco:"Optimizar a lead o a clic.", note:"Las plataformas tienen que ver aprobación y fondeo, no el microevento cómodo." },
+  { id:"kpis", name:"Diccionario de KPIs", lane:"data", stage:1, start:0, dur:3, owner:"Mitu + Escampa", deps:["kickoff"], unlocks:["dash1"], co:"Taxonomía de eventos.", noco:"Un KPI distinto por canal.", note:"Qué es una solicitud buena, una aprobación y un crédito fondeado. Números de negocio, no de media." },
+  { id:"clean", name:"Limpieza de data histórica", lane:"data", stage:1, start:1, dur:4, owner:"Data", deps:["kickoff"], unlocks:["dash1"], co:"Tagging. UTMs.", noco:"Usar el histórico sucio para scale-up.", note:"Ordenar lo que hay para no arrancar el tablero sobre basura. No es un data warehouse de 18 meses." },
+  { id:"dash1", name:"Dashboard v1 · adquisición → solicitud", lane:"data", stage:1, start:3, dur:4, owner:"Data", deps:["kpis","clean"], unlocks:["ritual","dash2"], co:"QA de medición. Paid en hold.", noco:"Declararlo “fuente de verdad” antes del QA.", note:"Lo que se puede ver apenas los eventos de frente existen. Se itera; no se espera la arquitectura perfecta." },
+  { id:"dash2", name:"Dashboard v2 · aprobación → fondeo", lane:"data", stage:1, start:5, dur:4, owner:"Data + producto", deps:["dash1","qa"], unlocks:["escala"], co:"Reestructura de campañas.", noco:"Escalar sin ver el crédito real.", note:"Cierra el funnel económico. Es el tablero con el que se discute presupuesto." },
+  { id:"cro-base", name:"Baseline de funnel", lane:"cro", stage:1, start:5, dur:3, owner:"CRO / medición", deps:["qa"], unlocks:["hip","cro-exp"], co:"Dashboard v1.", noco:"Tests A/B en semana 2.", note:"Dónde se cae la gente, con datos de una o dos semanas limpias. Hipótesis después, no al revés." },
+  { id:"hip", name:"Backlog de hipótesis CRO", lane:"cro", stage:2, start:6, dur:2, owner:"CRO + Mitu", deps:["cro-base"], unlocks:["cro-exp"], co:"Reestructura paid.", noco:"Rediseñar el sitio entero.", note:"Pocas apuestas, atadas a solicitud, KYC y oferta. No a la home." },
+  { id:"cro-exp", name:"Primeros experimentos CRO", lane:"cro", stage:2, start:8, dur:8, owner:"CRO + agencia", deps:["hip","qa"], unlocks:[], co:"Experimentación paid.", noco:"Tests sin QA de medición.", note:"Arrancan cuando el funnel se lee. Si el RFP atrasa la agencia, esto igual puede empezar con Mitu y producto." },
+  { id:"hold", name:"Paid en hold", lane:"paid", stage:1, start:0, dur:6, hold:true, rfpExtend:4, owner:"Quien opere el paid hoy", deps:[], unlocks:["reest"], co:"Todo Foundations. Onboarding de agencia.", noco:"Subir presupuesto. Nuevas campañas “de growth”.", note:"El negocio sigue. Se limpia lo grosero y se deja de empujar plata a ciegas. Hold no es apagar." },
+  { id:"onboard", name:"Onboarding de agencia", lane:"paid", stage:2, start:1, dur:2, rfp:4, owner:"ABN, liderada por Mitu", deps:["agencia"], unlocks:["reest"], co:"Foundations. Paid en hold.", noco:"Pedirles scale-up en la semana 2.", note:"Accesos, naming, brief de negocio, lectura del inventario. Entran a trabajar; no a gastar." },
+  { id:"reest", name:"Reestructura Google / Meta", lane:"paid", stage:2, start:6, dur:3, rfp:4, owner:"Agencia", deps:["conv","onboard"], unlocks:["exp-paid","escala"], co:"Dashboard v2 en construcción. CRO baseline.", noco:"Hold eterno. Tampoco un big bang de presupuesto.", note:"Campañas armadas contra aprobación y fondeo. Este es el primer acto de la etapa 2." },
+  { id:"exp-paid", name:"Cadencia de experimentación paid", lane:"paid", stage:2, start:7, dur:17, rfp:4, owner:"Agencia", deps:["reest"], unlocks:["escala"], co:"CRO. Ritual semanal.", noco:"Cambiar todo cada semana.", note:"Un backlog, un ritmo. Mitu prioriza contra el negocio." },
+  { id:"escala", name:"Escala controlada", lane:"paid", stage:2, start:9, dur:15, rfp:4, owner:"Agencia + Mitu", deps:["reest","dash2","ritual"], unlocks:[], co:"Experimentación. Dashboard v2.", noco:"Escala en Foundations. Escala sin fondeo visible.", note:"Dos o tres semanas de señal limpia. Recién ahí se mueve presupuesto de verdad." },
+  { id:"agencia", name:"Decisión de agencia", lane:"org", stage:1, start:0, dur:1, rfpDur:4, owner:"CEO + COO", deps:[], unlocks:["onboard"], co:"Kickoff. Foundations entero.", noco:"Kickoff y RFP a la vez, esperando el mismo calendario.", note:"ABN ahora, ABN a 90 días, o RFP. El interruptor de arriba modela el tercer camino." },
+  { id:"perfil", name:"Perfil del Growth Lead", lane:"org", stage:3, start:9, dur:3, owner:"Escampa + Mitu", deps:[], unlocks:["search"], co:"Ejecución ya en curso.", noco:"Pedirle al lead que arme Foundations. Eso ya tiene que existir.", note:"Se escribe cuando el sistema ya se ve. Contratar antes es contratar a ciegas." },
+  { id:"search", name:"Búsqueda del Growth Lead", lane:"org", stage:3, start:16, dur:8, owner:"Escampa", deps:["perfil"], unlocks:["lead"], co:"Ejecución con agencia.", noco:"Congelar la agencia esperando al lead.", note:"Meses 4–6. La agencia sigue. El lead llega a un sistema, no a un incendio." },
+  { id:"lead", name:"Growth Lead en rol (co-own)", lane:"org", stage:3, start:24, dur:24, owner:"Growth Lead + Mitu", deps:["search"], unlocks:["squad-hire"], co:"Agencia. Ritual. Experimentación.", noco:"Que Mitu desaparezca el día 1 del lead.", note:"Meses 6–12. El lead manda cada vez más. Mitu acompaña y desafía. La agencia ejecuta." },
+  { id:"squad-hire", name:"Contratación del squad", lane:"org", stage:4, start:36, dur:16, owner:"Growth Lead", deps:["lead"], unlocks:["squad"], co:"Agencia en paralelo, bajando peso.", noco:"Siete contrataciones en el mismo mes.", note:"Paid/analyst, CRO, UX, data, martech, creative. Gradual. El orden lo marca el backlog, no el organigrama soñado." },
+  { id:"squad", name:"Squad autónomo", lane:"org", stage:4, start:48, dur:24, owner:"Escampa", deps:["squad-hire"], unlocks:[], co:"Agencia como overflow / especialidad.", noco:"Dependencia táctica semanal de la agencia.", note:"Escampa lidera adquisición → conversión → approval → fondeo → LTV. Eso era el punto." }
+];
+
+const byId = Object.fromEntries(TASKS.map(t => [t.id, t]));
+const state = { scale: "weeks", rfp: false, filter: "all", open: null };
+
+function addWeeks(d, n){ const x = new Date(d); x.setDate(x.getDate() + n * 7); return x; }
+function fmtWeek(n){
+  const a = addWeeks(WEEK0, n);
+  const m = ["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
+  return a.getDate() + " " + m[a.getMonth()];
+}
+function fmtSpan(start, dur){
+  const a = addWeeks(WEEK0, start);
+  const b = addWeeks(WEEK0, start + dur);
+  const opt = { day:"numeric", month:"short", year:"numeric" };
+  return a.toLocaleDateString("es-MX", opt) + " → " + b.toLocaleDateString("es-MX", opt);
+}
+function resolved(t){
+  const start = t.start + (state.rfp && t.rfp ? t.rfp : 0);
+  let dur = t.dur;
+  if (state.rfp && t.rfpDur) dur = t.rfpDur;
+  if (state.rfp && t.rfpExtend) dur = t.dur + t.rfpExtend;
+  return { ...t, start, dur };
+}
+
+function cols(){
+  return state.scale === "weeks" ? 12 : 18;
+}
+function toCol(week){
+  return state.scale === "weeks" ? week : week / 4;
+}
+function clip(t){
+  const n = cols();
+  const s = toCol(t.start);
+  const e = toCol(t.start + t.dur);
+  if (e <= 0 || s >= n) return null;
+  const cs = Math.max(0, s);
+  const ce = Math.min(n, e);
+  return { left: (cs / n) * 100, width: ((ce - cs) / n) * 100, cont: e > n + 0.01 };
+}
+
+function stageBand(){
+  if (state.scale === "weeks"){
+    const n = 12;
+    return [
+      { cls:"s1", label:"Foundations", start:0, end:8 },
+      { cls:"s2", label:"Ejecución", start:6, end:12 }
+    ].map(b => ({ ...b, flex: b.end - b.start, left: b.start / n }));
+  }
+  return [
+    { cls:"s1", label:"Foundations", start:0, end:2 },
+    { cls:"s2", label:"Ejecución", start:2, end:6 },
+    { cls:"s3", label:"Internalizar", start:6, end:12 },
+    { cls:"s4", label:"Squad", start:12, end:18 }
+  ];
+}
+
+function ticks(){
+  const n = cols();
+  const out = [];
+  for (let i = 0; i < n; i++){
+    out.push(state.scale === "weeks" ? (i === 0 ? "21 sep" : "S" + (i + 1)) : monthLabel(i));
+  }
+  return out;
+}
+function monthLabel(i){
+  const m = ["Sep","Oct","Nov","Dic","Ene","Feb","Mar","Abr","May","Jun","Jul","Ago"];
+  const label = m[i % 12];
+  if (i === 0) return "Sep 26";
+  if (i === 4) return "Ene 27";
+  if (i === 16) return "Ene 28";
+  return label;
+}
+
+function visible(t){
+  if (state.filter !== "all" && String(t.stage) !== state.filter) return false;
+  return clip(t) !== null;
+}
+
+function pack(tasks){
+  const rows = [];
+  return tasks.map(t => {
+    const c = clip(t);
+    const a = c.left, b = c.left + c.width;
+    let row = rows.findIndex(end => a >= end - 0.4);
+    if (row < 0){ row = rows.length; rows.push(0); }
+    rows[row] = b;
+    return { t, c, row, rows: rows.length };
+  });
+}
+
+function renderGantt(){
+  const n = cols();
+  const bands = stageBand();
+  const tk = ticks();
+  const shell = document.getElementById("gantt-shell");
+  const bandHtml = bands.map(b => {
+    const start = b.start ?? 0;
+    const end = b.end ?? n;
+    const w = ((end - start) / n) * 100;
+    const l = (start / n) * 100;
+    return `<div class="band ${b.cls}" style="position:absolute;left:${l}%;width:${w}%;top:0;bottom:0">${b.label}</div>`;
+  }).join("");
+  const tickHtml = `<div class="ticks" style="grid-template-columns:repeat(${n},1fr)">${tk.map(t => `<div class="tick">${t}</div>`).join("")}</div>`;
+  const lanes = LANES.map(lane => {
+    const packed = pack(TASKS.map(resolved).filter(t => t.lane === lane.id && visible(t)));
+    const nRows = Math.max(1, ...packed.map(p => p.rows), 1);
+    const h = 16 + nRows * 32;
+    const bars = packed.map(({ t, c, row }) => {
+      const cls = [ "bar", t.hold ? "hold" : "s" + t.stage, c.cont ? "cont" : "", state.open === t.id ? "on" : "", state.open && state.open !== t.id ? "dim" : "" ].join(" ");
+      const top = 10 + row * 32;
+      return `<button type="button" class="${cls}" data-id="${t.id}" style="left:${c.left}%;width:max(${c.width}%,18px);--top:${top}px" title="${t.name}">${t.name}</button>`;
+    }).join("");
+    const gl = `<div class="gridlines" style="grid-template-columns:repeat(${n},1fr)">${"<span></span>".repeat(n)}</div>`;
+    return `<div class="lane"><div class="lane-name">${lane.name}</div><div class="track" style="min-height:${h}px">${gl}${bars}</div></div>`;
+  }).join("");
+  shell.innerHTML = `<div class="gantt"><div class="head"><div class="corner">Carril</div><div class="cols">${bandHtml}${tickHtml}</div></div>${lanes}</div>`;
+  shell.querySelectorAll(".bar").forEach(b => b.addEventListener("click", () => openTask(b.dataset.id)));
+  renderList();
+}
+
+function renderList(){
+  const el = document.getElementById("list");
+  el.innerHTML = LANES.map(lane => {
+    const items = TASKS.map(resolved).filter(t => t.lane === lane.id && visible(t)).map(t => {
+      return `<button class="item" data-id="${t.id}"><div class="t">${t.name}</div><div class="s">${fmtSpan(t.start, t.dur)} · ${t.owner}</div></button>`;
+    }).join("");
+    return `<div class="lane-h">${lane.name}</div><div class="card-list">${items}</div>`;
+  }).join("");
+  el.querySelectorAll(".item").forEach(b => b.addEventListener("click", () => openTask(b.dataset.id)));
+}
+
+function names(ids){
+  if (!ids || !ids.length) return "—";
+  return ids.map(id => byId[id] ? byId[id].name : id).join(". ");
+}
+
+function openTask(id){
+  const t = resolved(byId[id]);
+  state.open = id;
+  document.getElementById("d-stage").textContent = "Etapa 0" + t.stage + (t.hold ? " · hold" : "");
+  document.getElementById("d-title").textContent = t.name;
+  document.getElementById("d-meta").textContent = fmtSpan(t.start, t.dur) + " · " + t.dur + (t.dur === 1 ? " semana" : " semanas");
+  document.getElementById("d-owner").textContent = t.owner;
+  document.getElementById("d-deps").textContent = names(t.deps);
+  document.getElementById("d-unlocks").textContent = names(t.unlocks);
+  document.getElementById("d-co").textContent = t.co;
+  document.getElementById("d-noco").textContent = t.noco;
+  document.getElementById("d-note").textContent = t.note;
+  document.getElementById("drawer").classList.add("open");
+  document.getElementById("drawer").setAttribute("aria-hidden", "false");
+  document.getElementById("scrim").classList.add("on");
+  renderGantt();
+}
+function close(){
+  state.open = null;
+  document.getElementById("drawer").classList.remove("open");
+  document.getElementById("drawer").setAttribute("aria-hidden", "true");
+  document.getElementById("scrim").classList.remove("on");
+  renderGantt();
+}
+
+function renderFilters(){
+  const labels = [["all","Todas"],["1","Foundations"],["2","Ejecución"],["3","Internalizar"],["4","Squad"]];
+  document.getElementById("filters").innerHTML = labels.map(([v,l]) =>
+    `<button type="button" data-f="${v}" aria-pressed="${state.filter===v}">${l}</button>`
+  ).join("");
+  document.getElementById("filters").onclick = e => {
+    const b = e.target.closest("button"); if (!b) return;
+    state.filter = b.dataset.f; renderFilters(); renderGantt();
+  };
+}
+
+document.getElementById("btn-weeks").onclick = () => { state.scale = "weeks"; syncSeg(); renderGantt(); };
+document.getElementById("btn-months").onclick = () => { state.scale = "months"; syncSeg(); renderGantt(); };
+document.getElementById("btn-abn").onclick = () => { state.rfp = false; syncSeg(); renderGantt(); };
+document.getElementById("btn-rfp").onclick = () => { state.rfp = true; syncSeg(); renderGantt(); };
+function syncSeg(){
+  document.getElementById("btn-weeks").setAttribute("aria-pressed", state.scale === "weeks");
+  document.getElementById("btn-months").setAttribute("aria-pressed", state.scale === "months");
+  document.getElementById("btn-abn").setAttribute("aria-pressed", !state.rfp);
+  document.getElementById("btn-rfp").setAttribute("aria-pressed", state.rfp);
+}
+document.getElementById("close").onclick = close;
+document.getElementById("scrim").onclick = close;
+document.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
+
+const nav = document.querySelectorAll(".nav a");
+const secs = [...nav].map(a => document.querySelector(a.getAttribute("href"))).filter(Boolean);
+const io = new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    if (!en.isIntersecting) return;
+    nav.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + en.target.id));
+  });
+}, { rootMargin: "-40% 0px -50% 0px" });
+secs.forEach(s => io.observe(s));
+
+renderFilters();
+renderGantt();
+</script>
+</body>
+</html>
