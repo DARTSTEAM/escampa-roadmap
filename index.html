@@ -106,12 +106,11 @@ h2.ex{
 .stage ul{margin:10px 0 0;padding:0 0 0 16px;font-size:12.5px;color:var(--muted);font-weight:300;line-height:1.45}
 .stage li{margin:0 0 5px}
 .stage .when{margin-top:14px;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--navy)}
-.briefs{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--hair);border:1px solid var(--hair);margin-top:8px}
-.brief{background:var(--surface);padding:22px 20px 24px}
-.brief h3{font-size:15px;font-weight:600;margin:0 0 10px;color:var(--navy)}
-.brief ul{margin:0;padding:0 0 0 16px;font-size:13px;color:var(--muted);font-weight:300;line-height:1.45}
-.brief li{margin:0 0 6px}
-@media(max-width:800px){.briefs{grid-template-columns:1fr}}
+.briefs{margin-top:8px;border-top:1px solid var(--hair)}
+.brief{display:grid;grid-template-columns:200px 1fr;gap:16px;padding:10px 0;border-bottom:1px solid var(--hair);align-items:baseline}
+.brief h3{font-size:13px;font-weight:600;margin:0;color:var(--navy)}
+.brief p{font-size:12.5px;color:var(--muted);font-weight:300;line-height:1.4;margin:0}
+@media(max-width:800px){.brief{grid-template-columns:1fr;gap:4px}}
 
 /* Gantt */
 .toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-bottom:16px}
@@ -362,102 +361,25 @@ td.num{font-family:"Geist Mono",ui-monospace,monospace;font-size:12.5px;white-sp
         </div>
         <div class="gantt-shell" id="gantt-shell"></div>
         <div class="list" id="list"></div>
-        <p class="hint">Semana 1: 21 al 27 de septiembre de 2026. Doble clic en una barra abre el alcance.</p>
+        <p class="hint">Semana 1: 21 al 27 de septiembre de 2026. Clic en una barra abre el alcance.</p>
       </section>
 
       <section id="detalle">
         <span class="ex-n">Exhibit 3</span>
-        <h2 class="ex">Gantt double-click</h2>
-        <p class="sec-lead">El mismo texto que se abre al hacer doble clic en cada barra.</p>
+        <h2 class="ex">Detalle</h2>
+        <p class="sec-lead">Resumen. El texto completo sale al clic en la barra.</p>
         <div class="briefs">
-          <article class="brief">
-            <h3>Kickoff y accesos</h3>
-            <ul>
-              <li>Alinear objetivos, alcance y responsables entre Escampa, MITU y la agencia.</li>
-              <li>Habilitar accesos a cuentas publicitarias, analítica, CRM y fuentes de datos.</li>
-              <li>Relevar el funnel actual y definir la dinámica semanal de trabajo.</li>
-            </ul>
-          </article>
-          <article class="brief">
-            <h3>Medición</h3>
-            <ul>
-              <li>Definir eventos y conversiones desde la visita hasta la aprobación y el fondeo.</li>
-              <li>Configurar UTMs e identificadores para vincular campañas con resultados del negocio.</li>
-              <li>Validar el tracking y corregir eventos faltantes o duplicados.</li>
-            </ul>
-          </article>
-          <article class="brief">
-            <h3>Data warehouse</h3>
-            <ul>
-              <li>Centralizar inversión publicitaria, solicitudes, aprobaciones y fondeos.</li>
-              <li>Unificar identificadores y criterios para cruzar las fuentes.</li>
-              <li>Automatizar la actualización de datos y los controles de calidad.</li>
-            </ul>
-          </article>
-          <article class="brief">
-            <h3>Alertas</h3>
-            <ul>
-              <li>Configurar avisos ante fallas de tracking o interrupciones de datos.</li>
-              <li>Detectar desvíos de inversión, costos y tasas de conversión.</li>
-              <li>Definir umbrales, responsables y acciones ante cada alerta.</li>
-            </ul>
-          </article>
-          <article class="brief">
-            <h3>Dashboard v1</h3>
-            <ul>
-              <li>Visualizar inversión y resultados del funnel por canal y campaña.</li>
-              <li>Incorporar costos por solicitud, aprobación y crédito fondeado.</li>
-              <li>Validar los resultados contra las fuentes internas de Escampa.</li>
-            </ul>
-          </article>
-          <article class="brief">
-            <h3>Iteraciones de dashboard</h3>
-            <ul>
-              <li>Incorporar aperturas por producto, audiencia y cohorte.</li>
-              <li>Comparar resultados con metas y períodos anteriores.</li>
-              <li>Ajustar vistas según las decisiones y necesidades del equipo.</li>
-            </ul>
-          </article>
-          <article class="brief">
-            <h3>Auditoría de Paid Media</h3>
-            <ul>
-              <li>Revisar estructura de cuentas, campañas, audiencias y anuncios.</li>
-              <li>Evaluar presupuesto, resultados históricos y señales de optimización.</li>
-              <li>Priorizar correcciones y oportunidades para el lanzamiento.</li>
-            </ul>
-          </article>
-          <article class="brief">
-            <h3>Primeras campañas e iteraciones</h3>
-            <ul>
-              <li>Lanzar campañas con objetivos vinculados a aprobaciones y fondeos.</li>
-              <li>Probar audiencias, creatividades y páginas de destino.</li>
-              <li>Optimizar semanalmente según costos y calidad de las solicitudes.</li>
-            </ul>
-          </article>
-          <article class="brief">
-            <h3>Primeros KPIs</h3>
-            <ul>
-              <li>Construir una línea de base de costos y conversiones por etapa.</li>
-              <li>Identificar diferencias de desempeño entre canales y campañas.</li>
-              <li>Evaluar tiempos entre solicitud, aprobación y fondeo para interpretar resultados.</li>
-            </ul>
-          </article>
-          <article class="brief">
-            <h3>Escenarios de escala</h3>
-            <ul>
-              <li>Proyectar inversión y créditos fondeados bajo distintos escenarios.</li>
-              <li>Definir condiciones para aumentar, mantener o reducir presupuesto.</li>
-              <li>Diseñar pruebas graduales de expansión e incrementalidad.</li>
-            </ul>
-          </article>
-          <article class="brief">
-            <h3>KPIs fundacionales definidos</h3>
-            <ul>
-              <li>Acordar metas de adquisición, aprobación y fondeo con Escampa.</li>
-              <li>Documentar fórmulas, fuentes y responsables de cada indicador.</li>
-              <li>Establecer una revisión periódica de resultados y decisiones de inversión.</li>
-            </ul>
-          </article>
+          <article class="brief"><h3>Kickoff y accesos</h3><p>Objetivos y dueños. Accesos. Funnel y ritual semanal.</p></article>
+          <article class="brief"><h3>Medición</h3><p>Eventos hasta fondeo. UTMs. QA de tracking.</p></article>
+          <article class="brief"><h3>Data warehouse</h3><p>Inversión, solicitudes, aprobaciones y fondeos. IDs. Refresh y QA.</p></article>
+          <article class="brief"><h3>Alertas</h3><p>Tracking caído. Desvíos de costo y conversión. Umbrales y dueños.</p></article>
+          <article class="brief"><h3>Dashboard v1</h3><p>Funnel por canal. Costo por solicitud, aprobación y fondeo. Cruce con Escampa.</p></article>
+          <article class="brief"><h3>Iteraciones de dashboard</h3><p>Producto, audiencia, cohorte. Vs meta y período. Vistas que pide el equipo.</p></article>
+          <article class="brief"><h3>Auditoría de Paid Media</h3><p>Cuentas y anuncios. Histórico. Correcciones para el lanzamiento.</p></article>
+          <article class="brief"><h3>Primeras campañas e iteraciones</h3><p>Campañas a aprobación y fondeo. Tests. Optimización semanal.</p></article>
+          <article class="brief"><h3>Primeros KPIs</h3><p>Línea de base. Gaps entre canales. Tiempo solicitud–fondeo.</p></article>
+          <article class="brief"><h3>Escenarios de escala</h3><p>Inversión vs fondeo. Subir, mantener o bajar. Tests de incrementalidad.</p></article>
+          <article class="brief"><h3>KPIs fundacionales definidos</h3><p>Metas con Escampa. Fórmulas y dueños. Revisión periódica.</p></article>
         </div>
         <div class="foot">
           <div>Escampa · roadmap de growth · septiembre 2026</div>
@@ -619,10 +541,7 @@ function renderGantt(){
     return `<div class="lane"><div class="lane-name">${lane.name}</div><div class="track" style="min-height:${h}px">${gl}${bars}</div></div>`;
   }).join("");
   shell.innerHTML = `<div class="gantt"><div class="head"><div class="corner">Carril</div><div class="cols">${monthHtml}${tickHtml}</div></div>${lanes}</div>`;
-  shell.querySelectorAll(".bar").forEach(b => {
-    b.addEventListener("click", e => e.preventDefault());
-    b.addEventListener("dblclick", () => openTask(b.dataset.id));
-  });
+  shell.querySelectorAll(".bar").forEach(b => b.addEventListener("click", () => openTask(b.dataset.id)));
   renderList();
 }
 
