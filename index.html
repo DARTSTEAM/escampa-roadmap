@@ -12,6 +12,7 @@
 <style>
 :root{
   --navy:#0F2344;
+  --exec:#3A7EC5;
   --navy-2:#1B365D;
   --navy-3:#3D5A80;
   --navy-4:#7A8BA3;
@@ -114,7 +115,7 @@ h2.ex{
 .legend{display:flex;flex-wrap:wrap;gap:12px 16px;margin-left:auto;font-size:11.5px;color:var(--muted);align-items:center}
 .legend span{display:inline-flex;align-items:center;gap:6px;flex:0 0 auto;white-space:nowrap}
 .swatch{display:block;width:14px;height:8px;flex:0 0 14px}
-.swatch.c1{background:var(--navy)} .swatch.c2{background:var(--navy-2)} .swatch.c3{background:var(--navy-3)} .swatch.c4{background:var(--navy-4)} .swatch.ch{background:var(--hold)}
+.swatch.c1{background:var(--navy)} .swatch.c2{background:var(--exec)} .swatch.c3{background:var(--navy-3)} .swatch.c4{background:var(--navy-4)} .swatch.ch{background:var(--hold)}
 
 .filters{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
 .filters button{
@@ -131,12 +132,13 @@ h2.ex{
 .head,.lane{display:grid;grid-template-columns:var(--lane) 1fr}
 .head{position:sticky;top:0;z-index:3;background:var(--surface);border-bottom:1px solid var(--hair)}
 .corner{position:sticky;left:0;z-index:4;background:var(--surface);border-right:1px solid var(--hair);padding:10px 12px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);font-weight:700}
-.cols{position:relative;min-height:64px}
-.bands{position:absolute;inset:0 0 28px 0;display:flex;pointer-events:none}
-.band{display:flex;align-items:flex-start;padding:6px 8px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);opacity:.85;overflow:hidden;white-space:nowrap}
-.band.s1{background:rgba(15,35,68,.06)} .band.s2{background:rgba(27,54,93,.08)} .band.s3{background:rgba(61,90,128,.10)} .band.s4{background:rgba(122,139,163,.12)}
-.ticks{position:absolute;left:0;right:0;bottom:0;display:grid;height:28px;border-top:1px solid var(--hair)}
-.tick{font-family:"Geist Mono",ui-monospace,monospace;font-size:10px;color:var(--faint);padding:6px 6px 0;border-left:1px solid var(--hair)}
+.cols{display:flex;flex-direction:column;min-height:56px}
+.months{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--hair);height:26px}
+.month{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);padding:6px 8px 0;border-left:1px solid var(--hair)}
+.month:first-child{border-left:0}
+.month:nth-child(even){background:rgba(15,35,68,.04)}
+.ticks{display:grid;height:26px}
+.tick{font-family:"Geist Mono",ui-monospace,monospace;font-size:10px;color:var(--faint);padding:6px 4px 0;border-left:1px solid var(--hair)}
 .tick:first-child{border-left:0}
 
 .lane{border-bottom:1px solid var(--hair)}
@@ -156,7 +158,7 @@ h2.ex{
   font-size:11px;font-weight:500;color:#fff;text-align:left;white-space:nowrap;
   background:var(--navy);letter-spacing:-.01em;
 }
-.bar.s1{background:var(--navy)} .bar.s2{background:var(--navy-2)} .bar.s3{background:var(--navy-3)} .bar.s4{background:var(--navy-4);color:var(--ink)}
+.bar.s1{background:var(--navy)} .bar.s2{background:var(--exec)} .bar.s3{background:var(--navy-3)} .bar.s4{background:var(--navy-4);color:var(--ink)}
 .bar.hold{background:var(--hold);color:var(--navy)}
 .bar.cont::after{content:"";position:absolute;right:6px;width:0;height:0;border-top:4px solid transparent;border-bottom:4px solid transparent;border-left:5px solid currentColor;opacity:.7}
 .bar:hover,.bar:focus-visible{outline:2px solid var(--ink);outline-offset:1px;z-index:1}
@@ -274,29 +276,29 @@ td.num{font-family:"Geist Mono",ui-monospace,monospace;font-size:12.5px;white-sp
       <header class="hero" id="principio">
         <p class="kicker">Septiembre 2026</p>
         <h1>Antes de escalar la inversión, Escampa necesita <em>medir, aprender y optimizar.</em></h1>
-        <p class="lead">Diagnóstico del paid actual: no escala. No hay data, no hay infraestructura, no hay dashboards usables. Semanas 1 y 2: boceto de dashboard, ping-pong en paralelo. Semanas 2 y 3: medir y colectar. Semana 4: dashboard v1 y primeras campañas.</p>
+        <p class="lead">Diagnóstico del paid actual: no escala. No hay data, no hay infraestructura, no hay dashboards usables. Medición y warehouse en S2 a S4. Dashboard v1 y primeras campañas en S4. Escala después de esas campañas.</p>
         <div class="facts">
-          <div class="fact"><div class="v">6</div><div class="l">Semanas. Kickoff, foundations, dashboard y paid.</div></div>
-          <div class="fact"><div class="v">S2 a S3</div><div class="l">Medir bien, colectar bien. Medición y data warehouse.</div></div>
-          <div class="fact"><div class="v">S4</div><div class="l">Alertas, dashboard v1 y primeras campañas, en paralelo.</div></div>
+          <div class="fact"><div class="v">S1</div><div class="l">Kickoff y accesos.</div></div>
+          <div class="fact"><div class="v">S2 a S4</div><div class="l">Medición y data warehouse.</div></div>
+          <div class="fact"><div class="v">S4</div><div class="l">Dashboard v1, alertas y primeras campañas.</div></div>
         </div>
       </header>
 
       <section id="secuencia">
         <span class="ex-n">Exhibit 1</span>
         <h2 class="ex">Dos bloques</h2>
-        <p class="sec-lead">Boceto de dashboard en semanas 1 y 2, en paralelo. Medir y colectar en semanas 2 y 3. Alertas, dashboard v1 y primeras campañas en semana 4. Escala en semanas 5 y 6.</p>
+        <p class="sec-lead">Medición y warehouse en S2 a S4. Dashboard v1 y primeras campañas en S4. Escala después de las campañas e iteraciones.</p>
         <div class="stages">
           <article class="stage">
             <div class="idx">01</div>
             <h3>Foundations</h3>
             <p>Medir bien, colectar bien. Medición y data warehouse. En paid, auditoría de lo actual.</p>
-            <div class="when">Semanas 2 y 3</div>
+            <div class="when">S2 a S4</div>
           </article>
           <article class="stage">
             <div class="idx">02</div>
             <h3>Ejecución</h3>
-            <p>Alertas y dashboard v1. En paralelo, primeras campañas e iteraciones. Después, escenarios de escala.</p>
+            <p>Alertas y dashboard v1. En paralelo, primeras campañas e iteraciones. Escenarios de escala después.</p>
             <div class="when">Desde semana 4</div>
           </article>
         </div>
@@ -329,33 +331,33 @@ td.num{font-family:"Geist Mono",ui-monospace,monospace;font-size:12.5px;white-sp
           <tbody>
             <tr>
               <td>1</td>
-              <td>Kickoff y accesos. GTM, GA4, Ads, Meta, warehouse, usuario de prueba. En paralelo, boceto de dashboard (ping-pong).</td>
+              <td>Kickoff y accesos. GTM, GA4, Ads, Meta, warehouse, usuario de prueba.</td>
               <td>Mitu + Escampa</td>
               <td>Foundations</td>
             </tr>
             <tr>
-              <td>1 a 2</td>
-              <td>Boceto de dashboard. Ida y vuelta con Escampa y Mitu, en paralelo al kickoff y a foundations.</td>
-              <td>Data + Mitu + Escampa</td>
-              <td>Dashboard v1</td>
-            </tr>
-            <tr>
-              <td>2 a 3</td>
-              <td>Foundations. Medir bien, colectar bien. Medición y data warehouse. En paid, auditoría de lo actual.</td>
+              <td>2 a 4</td>
+              <td>Medición y data warehouse. En paid, auditoría de lo actual.</td>
               <td>Medición + data. Agencia en la auditoría.</td>
-              <td>Alertas, dashboard v1, primeras campañas</td>
+              <td>Dashboard v1, alertas, primeras campañas</td>
             </tr>
             <tr>
               <td>4</td>
-              <td>Alertas. Dashboard v1. En paralelo, primeras campañas de paid e iteraciones.</td>
+              <td>Alertas. Dashboard v1. En paralelo, primeras campañas e iteraciones.</td>
               <td>Data + agencia, Mitu al frente</td>
-              <td>Iteración del tablero y escenarios de escala</td>
+              <td>Iteración del tablero</td>
             </tr>
             <tr>
               <td>5 a 6</td>
-              <td>Iteraciones del dashboard. Empiezan escenarios de escala.</td>
-              <td>Data + agencia</td>
-              <td>Cadencia de performance sobre el tablero</td>
+              <td>Iteraciones del dashboard.</td>
+              <td>Data</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Post campañas</td>
+              <td>Escenarios de escala.</td>
+              <td>Agencia + Mitu</td>
+              <td></td>
             </tr>
           </tbody>
         </table>
@@ -370,10 +372,10 @@ td.num{font-family:"Geist Mono",ui-monospace,monospace;font-size:12.5px;white-sp
             <tr><th></th><th>Puede convivir</th><th>No convive</th></tr>
           </thead>
           <tbody>
-            <tr><td>Sem. 1 a 2</td><td class="yes">Boceto de dashboard, ping-pong. Kickoff, accesos, foundations.</td><td class="no">Dashboard v1 como fuente. Campañas nuevas.</td></tr>
-            <tr><td>Sem. 2 a 3</td><td class="yes">Medición y data warehouse. Auditoría de paid actual. Cierre del boceto.</td><td class="no">Primeras campañas nuevas. Escala.</td></tr>
-            <tr><td>Sem. 4</td><td class="yes">Alertas, dashboard v1 y primeras campañas, en paralelo.</td><td class="no">Escenarios de escala.</td></tr>
-            <tr><td>Sem. 5 a 6</td><td class="yes">Iteración del dashboard y escenarios de escala.</td><td class="no"></td></tr>
+            <tr><td>S1</td><td class="yes">Kickoff y accesos.</td><td class="no">Campañas nuevas. Dashboard v1.</td></tr>
+            <tr><td>S2 a S4</td><td class="yes">Medición, warehouse y auditoría de paid.</td><td class="no">Escala.</td></tr>
+            <tr><td>S4</td><td class="yes">Alertas, dashboard v1 y primeras campañas.</td><td class="no">Escenarios de escala.</td></tr>
+            <tr><td>S5 a S6</td><td class="yes">Iteraciones de dashboard, sobre las campañas ya arrancadas.</td><td class="no">Escala. Va después de campañas e iteraciones.</td></tr>
           </tbody>
         </table>
       </section>
@@ -439,16 +441,15 @@ const LANES = [
   { id: "paid", name: "Paid media" }
 ];
 const TASKS = [
-  { id:"kickoff", name:"Kickoff y accesos", lane:"kick", stage:1, start:0, dur:1, owner:"Mitu + Escampa", deps:[], unlocks:["med","wh","audit","boceto"], co:"Boceto de dashboard.", noco:"Esperar un comité.", note:"Arranca semana 1. Accesos a GTM, GA4, Ads, Meta, warehouse y usuario de prueba." },
-  { id:"boceto", name:"Boceto de dashboard", lane:"rep", stage:1, start:0, dur:2, owner:"Data + Mitu + Escampa", deps:[], unlocks:["dash1"], co:"Kickoff, accesos. Foundations desde semana 2.", noco:"Tomar el boceto como tablero en producción.", note:"Arranca semana 1. Ping-pong las primeras 2 semanas, en paralelo." },
-  { id:"med", name:"Medición", lane:"found", stage:1, start:1, dur:4, owner:"Medición", deps:["kickoff"], unlocks:["alertas","dash1","camp"], co:"Data warehouse. Auditoría paid. Boceto.", noco:"Campañas nuevas antes de semana 4.", note:"Arranca semana 2. Medir bien: eventos, UTMs, consolidación GTM/GA4." },
-  { id:"wh", name:"Data warehouse", lane:"found", stage:1, start:1, dur:4, owner:"Data", deps:["kickoff"], unlocks:["alertas","dash1"], co:"Medición. Auditoría paid. Boceto.", noco:"Dashboard v1 sin capa de datos.", note:"Arranca semana 2. Colectar bien." },
-  { id:"audit", name:"Auditoría de paid actual", lane:"paid", stage:1, start:1, dur:2, owner:"Agencia", deps:["kickoff"], unlocks:["camp"], co:"Medición y warehouse.", noco:"Scale-up sobre la estructura actual.", note:"Arranca semana 2, en paralelo a Foundations." },
-  { id:"alertas", name:"Alertas", lane:"rep", stage:2, start:3, dur:3, owner:"Data", deps:["med","wh"], unlocks:[], co:"Dashboard v1. Primeras campañas.", noco:"", note:"Arranca semana 4. Fila aparte del dashboard v1." },
-  { id:"dash1", name:"Dashboard v1", lane:"rep", stage:2, start:3, dur:3, owner:"Data", deps:["boceto","med","wh"], unlocks:["dashit"], co:"Alertas. Primeras campañas.", noco:"", note:"Arranca semana 4. Parte del boceto ping-pongeado en semanas 1 y 2." },
-  { id:"camp", name:"Primeras campañas e iteraciones", lane:"paid", stage:2, start:3, dur:8, owner:"Agencia, Mitu al frente", deps:["audit"], unlocks:["escala"], co:"Alertas y dashboard v1.", noco:"Escenarios de escala en semana 4.", note:"Arranca semana 4, en paralelo a alertas y dashboard v1." },
-  { id:"dashit", name:"Iteraciones de dashboard", lane:"rep", stage:2, start:4, dur:8, owner:"Data", deps:["dash1"], unlocks:[], co:"Escenarios de escala.", noco:"", note:"Arranca semanas 5 a 6." },
-  { id:"escala", name:"Escenarios de escala", lane:"paid", stage:2, start:4, dur:8, owner:"Agencia + Mitu", deps:["camp"], unlocks:[], co:"Iteraciones de dashboard.", noco:"", note:"Arranca semanas 5 a 6." }
+  { id:"kickoff", name:"Kickoff y accesos", lane:"kick", stage:1, start:0, dur:1, owner:"Mitu + Escampa", deps:[], unlocks:["med","wh","audit"], co:"", noco:"Campañas nuevas.", note:"Arranca S1. Accesos a GTM, GA4, Ads, Meta, warehouse y usuario de prueba." },
+  { id:"med", name:"Medición", lane:"found", stage:1, start:1, dur:3, owner:"Medición", deps:["kickoff"], unlocks:["alertas","dash1","camp"], co:"Data warehouse. Auditoría paid.", noco:"Campañas nuevas antes de S4.", note:"S2 a S4. Eventos, UTMs, consolidación GTM/GA4." },
+  { id:"wh", name:"Data warehouse", lane:"found", stage:1, start:1, dur:3, owner:"Data", deps:["kickoff"], unlocks:["alertas","dash1"], co:"Medición. Auditoría paid.", noco:"Dashboard v1 sin capa de datos.", note:"S2 a S4. Colectar bien." },
+  { id:"audit", name:"Auditoría de paid actual", lane:"paid", stage:1, start:1, dur:2, owner:"Agencia", deps:["kickoff"], unlocks:["camp"], co:"Medición y warehouse.", noco:"Scale-up sobre la estructura actual.", note:"Arranca S2, en paralelo a Foundations." },
+  { id:"alertas", name:"Alertas", lane:"rep", stage:2, start:3, dur:3, owner:"Data", deps:["med","wh"], unlocks:[], co:"Dashboard v1. Primeras campañas.", noco:"", note:"Arranca S4. Fila aparte del dashboard v1." },
+  { id:"dash1", name:"Dashboard v1", lane:"rep", stage:2, start:3, dur:3, owner:"Data", deps:["med","wh"], unlocks:["dashit"], co:"Alertas. Primeras campañas.", noco:"", note:"Arranca S4." },
+  { id:"camp", name:"Primeras campañas e iteraciones", lane:"paid", stage:2, start:3, dur:5, owner:"Agencia, Mitu al frente", deps:["audit"], unlocks:["escala"], co:"Alertas y dashboard v1.", noco:"Escenarios de escala en S4.", note:"Arranca S4. Escala empieza cuando esto termina." },
+  { id:"dashit", name:"Iteraciones de dashboard", lane:"rep", stage:2, start:4, dur:8, owner:"Data", deps:["dash1"], unlocks:[], co:"Campañas en curso.", noco:"", note:"Arranca S5 a S6." },
+  { id:"escala", name:"Escenarios de escala", lane:"paid", stage:2, start:8, dur:8, owner:"Agencia + Mitu", deps:["camp"], unlocks:[], co:"Iteraciones de dashboard, si siguen.", noco:"Solaparse con las primeras campañas.", note:"Arranca después de primeras campañas e iteraciones (S9)." }
 ];
 
 const byId = Object.fromEntries(TASKS.map(t => [t.id, t]));
@@ -477,13 +478,8 @@ function clip(t){
   const ce = Math.min(n, e);
   return { left: (cs / n) * 100, width: ((ce - cs) / n) * 100, cont: e > n + 0.01 };
 }
-function stageBand(){
-  return [
-    { cls:"s1", label:"Sep", start:0, end:4 },
-    { cls:"s2", label:"Oct", start:4, end:8 },
-    { cls:"s1", label:"Nov", start:8, end:12 },
-    { cls:"s2", label:"Dic / ene", start:12, end:16 }
-  ];
+function months(){
+  return ["Sep 2026","Oct 2026","Nov 2026","Dic 2026 / ene 2027"];
 }
 function ticks(){
   const out = [];
@@ -506,16 +502,9 @@ function pack(tasks){
 
 function renderGantt(){
   const n = cols();
-  const bands = stageBand();
   const tk = ticks();
   const shell = document.getElementById("gantt-shell");
-  const bandHtml = bands.map(b => {
-    const start = b.start ?? 0;
-    const end = b.end ?? n;
-    const w = ((end - start) / n) * 100;
-    const l = (start / n) * 100;
-    return `<div class="band ${b.cls}" style="position:absolute;left:${l}%;width:${w}%;top:0;bottom:0">${b.label}</div>`;
-  }).join("");
+  const monthHtml = `<div class="months">${months().map(m => `<div class="month">${m}</div>`).join("")}</div>`;
   const tickHtml = `<div class="ticks" style="grid-template-columns:repeat(${n},1fr)">${tk.map(t => `<div class="tick">${t}</div>`).join("")}</div>`;
   const lanes = LANES.map(lane => {
     const packed = pack(TASKS.map(resolved).filter(t => t.lane === lane.id && visible(t)));
@@ -529,7 +518,7 @@ function renderGantt(){
     const gl = `<div class="gridlines" style="grid-template-columns:repeat(${n},1fr)">${"<span></span>".repeat(n)}</div>`;
     return `<div class="lane"><div class="lane-name">${lane.name}</div><div class="track" style="min-height:${h}px">${gl}${bars}</div></div>`;
   }).join("");
-  shell.innerHTML = `<div class="gantt"><div class="head"><div class="corner">Carril</div><div class="cols">${bandHtml}${tickHtml}</div></div>${lanes}</div>`;
+  shell.innerHTML = `<div class="gantt"><div class="head"><div class="corner">Carril</div><div class="cols">${monthHtml}${tickHtml}</div></div>${lanes}</div>`;
   shell.querySelectorAll(".bar").forEach(b => b.addEventListener("click", () => openTask(b.dataset.id)));
   renderList();
 }
