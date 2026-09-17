@@ -348,8 +348,8 @@ td.num{font-family:"Geist Mono",ui-monospace,monospace;font-size:12.5px;white-sp
               <td>Iteración del tablero</td>
             </tr>
             <tr>
-              <td>5 a 6</td>
-              <td>Iteraciones del dashboard.</td>
+              <td>7 a 16</td>
+              <td>Iteraciones del dashboard, ongoing.</td>
               <td>Data</td>
               <td></td>
             </tr>
@@ -375,7 +375,7 @@ td.num{font-family:"Geist Mono",ui-monospace,monospace;font-size:12.5px;white-sp
             <tr><td>S1</td><td class="yes">Kickoff y accesos.</td><td class="no">Campañas nuevas. Dashboard v1.</td></tr>
             <tr><td>S2 a S4</td><td class="yes">Medición, warehouse y auditoría de paid.</td><td class="no">Escala.</td></tr>
             <tr><td>S4</td><td class="yes">Alertas, dashboard v1 y primeras campañas.</td><td class="no">Escenarios de escala.</td></tr>
-            <tr><td>S5 a S6</td><td class="yes">Iteraciones de dashboard, sobre las campañas ya arrancadas.</td><td class="no">Escala. Va después de campañas e iteraciones.</td></tr>
+            <tr><td>S7 a S16</td><td class="yes">Iteraciones de dashboard, ongoing.</td><td class="no"></td></tr>
           </tbody>
         </table>
       </section>
@@ -448,7 +448,7 @@ const TASKS = [
   { id:"alertas", name:"Alertas", lane:"rep", stage:2, start:3, dur:3, owner:"Data", deps:["med","wh"], unlocks:[], co:"Dashboard v1. Primeras campañas.", noco:"", note:"Arranca S4. Fila aparte del dashboard v1." },
   { id:"dash1", name:"Dashboard v1", lane:"rep", stage:2, start:3, dur:3, owner:"Data", deps:["med","wh"], unlocks:["dashit"], co:"Alertas. Primeras campañas.", noco:"", note:"Arranca S4." },
   { id:"camp", name:"Primeras campañas e iteraciones", lane:"paid", stage:2, start:3, dur:5, owner:"Agencia, Mitu al frente", deps:["audit"], unlocks:["escala"], co:"Alertas y dashboard v1.", noco:"Escenarios de escala en S4.", note:"Arranca S4. Escala empieza cuando esto termina." },
-  { id:"dashit", name:"Iteraciones de dashboard", lane:"rep", stage:2, start:4, dur:8, owner:"Data", deps:["dash1"], unlocks:[], co:"Campañas en curso.", noco:"", note:"Arranca S5 a S6." },
+  { id:"dashit", name:"Iteraciones de dashboard", lane:"rep", stage:2, start:6, dur:10, owner:"Data", deps:["dash1"], unlocks:[], co:"Campañas, después escala.", noco:"", note:"S7 a S16. Ongoing." },
   { id:"escala", name:"Escenarios de escala", lane:"paid", stage:2, start:8, dur:8, owner:"Agencia + Mitu", deps:["camp"], unlocks:[], co:"Iteraciones de dashboard, si siguen.", noco:"Solaparse con las primeras campañas.", note:"Arranca después de primeras campañas e iteraciones (S9)." }
 ];
 
