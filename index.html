@@ -96,7 +96,7 @@ h2.ex{
 .fact .v{font-family:"Playfair Display",Georgia,serif;font-size:28px;color:var(--navy);line-height:1}
 .fact .l{margin-top:8px;font-size:12.5px;color:var(--muted);max-width:24ch}
 
-.stages{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--hair);border:1px solid var(--hair);margin-top:8px}
+.stages{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--hair);border:1px solid var(--hair);margin-top:8px}
 .stage{background:var(--surface);padding:22px 20px 24px}
 .stage .idx{font-family:"Geist Mono",ui-monospace,monospace;font-size:11px;color:var(--navy-3)}
 .stage h3{font-size:15.5px;font-weight:600;margin:10px 0 8px;color:var(--navy)}
@@ -262,8 +262,6 @@ td.num{font-family:"Geist Mono",ui-monospace,monospace;font-size:12.5px;white-sp
       <a href="#etapas"><span class="n">03</span>Alcance</a>
       <a href="#convivencia"><span class="n">04</span>Convivencia</a>
       <a href="#agencia"><span class="n">05</span>Agencia</a>
-      <a href="#costos"><span class="n">06</span>Costos</a>
-      <a href="#decision"><span class="n">07</span>Pasos</a>
     </nav>
     <div class="rail-foot">
       <b>Kickoff posible</b>
@@ -276,42 +274,30 @@ td.num{font-family:"Geist Mono",ui-monospace,monospace;font-size:12.5px;white-sp
       <header class="hero" id="principio">
         <p class="kicker">Septiembre 2026</p>
         <h1>Antes de escalar la inversión, Escampa necesita <em>medir, aprender y optimizar.</em></h1>
-        <p class="lead">Diagnóstico del paid actual: no escala. No hay data, no hay infraestructura, no hay dashboards usables. Foundations va primero. La ejecución operativa empieza después.</p>
+        <p class="lead">Diagnóstico del paid actual: no escala. No hay data, no hay infraestructura, no hay dashboards usables. Semanas 1 y 2: boceto de dashboard, ping-pong en paralelo. Semanas 2 y 3: medir y colectar. Semana 4: dashboard v1 y primeras campañas.</p>
         <div class="facts">
-          <div class="fact"><div class="v">4</div><div class="l">Etapas. Foundations antes de la primera ejecución.</div></div>
-          <div class="fact"><div class="v">8 a 10</div><div class="l">Semanas de proyecto. Tracking, UTMs, CRO, data, tableros.</div></div>
-          <div class="fact"><div class="v">+4 sem</div><div class="l">Due diligence de agencia. Ya pasó con CleverTap.</div></div>
+          <div class="fact"><div class="v">6</div><div class="l">Semanas. Kickoff, foundations, dashboard y paid.</div></div>
+          <div class="fact"><div class="v">S2 a S3</div><div class="l">Medir bien, colectar bien. Medición y data warehouse.</div></div>
+          <div class="fact"><div class="v">S4</div><div class="l">Alertas, dashboard v1 y primeras campañas, en paralelo.</div></div>
         </div>
       </header>
 
       <section id="secuencia">
         <span class="ex-n">Exhibit 1</span>
-        <h2 class="ex">Cuatro etapas</h2>
-        <p class="sec-lead">Medición, data, atribución, reporting, después optimización y escala. El paid actual se mantiene en hold. No se apaga. No se agranda.</p>
+        <h2 class="ex">Dos bloques</h2>
+        <p class="sec-lead">Boceto de dashboard en semanas 1 y 2, en paralelo. Medir y colectar en semanas 2 y 3. Alertas, dashboard v1 y primeras campañas en semana 4. Escala en semanas 5 y 6.</p>
         <div class="stages">
           <article class="stage">
             <div class="idx">01</div>
             <h3>Foundations</h3>
-            <p>Tracking, UTMs, limpieza de data, baseline de CRO y un dashboard. Proyecto puntual. Condición de la etapa 2.</p>
-            <div class="when">Semanas 1 a 8</div>
+            <p>Medir bien, colectar bien. Medición y data warehouse. En paid, auditoría de lo actual.</p>
+            <div class="when">Semanas 2 y 3</div>
           </article>
           <article class="stage">
             <div class="idx">02</div>
             <h3>Ejecución</h3>
-            <p>Agencia de paid, liderada por Mitu. Reestructura Google y Meta contra aprobación y fondeo. Reunión semanal de performance.</p>
-            <div class="when">Desde semana 7</div>
-          </article>
-          <article class="stage">
-            <div class="idx">03</div>
-            <h3>Internalizar</h3>
-            <p>Entra un Growth Lead de Escampa. Comparte con Mitu los KPIs, el presupuesto y el brief a la agencia. Escampa toma más decisiones.</p>
-            <div class="when">Meses 6 a 12</div>
-          </article>
-          <article class="stage">
-            <div class="idx">04</div>
-            <h3>Squad propio</h3>
-            <p>Equipo interno sobre adquisición, conversión, approval, fondeo y LTV. La agencia cubre picos y trabajo especializado.</p>
-            <div class="when">Desde el mes 12</div>
+            <p>Alertas y dashboard v1. En paralelo, primeras campañas e iteraciones. Después, escenarios de escala.</p>
+            <div class="when">Desde semana 4</div>
           </article>
         </div>
       </section>
@@ -319,13 +305,9 @@ td.num{font-family:"Geist Mono",ui-monospace,monospace;font-size:12.5px;white-sp
       <section id="gantt">
         <span class="ex-n">Exhibit 2</span>
         <h2 class="ex">Gantt</h2>
-        <p class="sec-lead">Tareas, dependencias y qué convive con qué. 12 semanas o 18 meses. RFP corre la ejecución 4 semanas. Clic en una barra para el detalle.</p>
+        <p class="sec-lead">La semana marcada es el arranque. La barra es la duración. Cuatro carriles. RFP corre paid 4 semanas.</p>
 
         <div class="toolbar">
-          <div class="seg" role="group" aria-label="Escala de tiempo">
-            <button type="button" id="btn-weeks" aria-pressed="true">12 semanas</button>
-            <button type="button" id="btn-months" aria-pressed="false">18 meses</button>
-          </div>
           <div class="seg" role="group" aria-label="Camino de agencia">
             <button type="button" id="btn-abn" aria-pressed="true">ABN ahora</button>
             <button type="button" id="btn-rfp" aria-pressed="false">RFP +4 sem</button>
@@ -333,49 +315,51 @@ td.num{font-family:"Geist Mono",ui-monospace,monospace;font-size:12.5px;white-sp
           <div class="legend">
             <span><span class="swatch c1"></span>Foundations</span>
             <span><span class="swatch c2"></span>Ejecución</span>
-            <span><span class="swatch c3"></span>Internalizar</span>
-            <span><span class="swatch c4"></span>Squad</span>
-            <span><span class="swatch ch"></span>Hold</span>
           </div>
         </div>
-        <div class="filters" id="filters"></div>
         <div class="gantt-shell" id="gantt-shell"></div>
         <div class="list" id="list"></div>
-        <p class="hint">La semana 1 es del 21 al 27 de septiembre de 2026. Hold es el paid actual, prendido y sin scale-up. Si una barra sigue después de la semana 12, lleva flecha.</p>
+        <p class="hint">Semana 1: 21 al 27 de septiembre de 2026.</p>
       </section>
 
       <section id="etapas">
         <span class="ex-n">Exhibit 3</span>
         <h2 class="ex">Alcance por etapa</h2>
-        <p class="sec-lead">Foundations es proyecto. Ejecución es retainer. Internalizar y squad son hiring de Escampa.</p>
+        <p class="sec-lead">La semana es cuándo arranca, no cuánto dura.</p>
         <table>
           <thead>
-            <tr><th>Etapa</th><th>Trabajo</th><th>Dueño</th><th>Hito que desbloquea la siguiente</th></tr>
+            <tr><th>Arranca</th><th>Trabajo</th><th>Dueño</th><th>Desbloquea</th></tr>
           </thead>
           <tbody>
             <tr>
-              <td>01 Foundations</td>
-              <td>Inventario y freeze de tags (hoy: tres GTM, tres GA4, dos pixels). Taxonomía de eventos campaña → aprobación → fondeo. UTMs y CRM. Consolidación GTM/GA4. Consentimiento entre dominios. Limpieza de data. Diccionario de KPIs. Dashboard v1 y v2. Baseline de CRO. QA con usuario de prueba hasta fondeo.</td>
-              <td>Equipo de data / medición, con Mitu priorizando</td>
-              <td>QA end-to-end pasado. Aprobación y fondeo mapeados a Google y Meta.</td>
+              <td>1</td>
+              <td>Kickoff y accesos. GTM, GA4, Ads, Meta, warehouse, usuario de prueba. En paralelo, boceto de dashboard (ping-pong).</td>
+              <td>Mitu + Escampa</td>
+              <td>Foundations</td>
             </tr>
             <tr>
-              <td>02 Ejecución</td>
-              <td>Onboarding de agencia. Reestructura de campañas sobre señales finales. Cadencia semanal. Experimentación paid y primeros tests CRO. Escala controlada cuando hay dos o tres semanas de señal limpia.</td>
-              <td>Agencia, liderada por Mitu</td>
-              <td>La reunión semanal se corre sobre el dashboard. Ads Manager deja de ser la fuente.</td>
+              <td>1 a 2</td>
+              <td>Boceto de dashboard. Ida y vuelta con Escampa y Mitu, en paralelo al kickoff y a foundations.</td>
+              <td>Data + Mitu + Escampa</td>
+              <td>Dashboard v1</td>
             </tr>
             <tr>
-              <td>03 Internalizar</td>
-              <td>Perfil, búsqueda e incorporación del Growth Lead. Co-own con Mitu de KPIs, presupuesto y roadmap. El lead gestiona y desafía a la agencia. Alineación Marketing, Producto, Data y Tech.</td>
-              <td>Growth Lead + Mitu + agencia</td>
-              <td>El lead interno corre el ritual y el backlog sin que Mitu tenga que estar en cada decisión táctica</td>
+              <td>2 a 3</td>
+              <td>Foundations. Medir bien, colectar bien. Medición y data warehouse. En paid, auditoría de lo actual.</td>
+              <td>Medición + data. Agencia en la auditoría.</td>
+              <td>Alertas, dashboard v1, primeras campañas</td>
             </tr>
             <tr>
-              <td>04 Squad</td>
-              <td>Contratación gradual. Paid/analyst, CRO, UX, data, martech, creative. Un backlog de adquisición a retención. Escampa lidera. La agencia cubre picos y especialidad.</td>
-              <td>Escampa</td>
-              <td>Escampa dueña del backlog de growth. La agencia ya no define la prioridad semanal.</td>
+              <td>4</td>
+              <td>Alertas. Dashboard v1. En paralelo, primeras campañas de paid e iteraciones.</td>
+              <td>Data + agencia, Mitu al frente</td>
+              <td>Iteración del tablero y escenarios de escala</td>
+            </tr>
+            <tr>
+              <td>5 a 6</td>
+              <td>Iteraciones del dashboard. Empiezan escenarios de escala.</td>
+              <td>Data + agencia</td>
+              <td>Cadencia de performance sobre el tablero</td>
             </tr>
           </tbody>
         </table>
@@ -384,18 +368,17 @@ td.num{font-family:"Geist Mono",ui-monospace,monospace;font-size:12.5px;white-sp
       <section id="convivencia">
         <span class="ex-n">Exhibit 4</span>
         <h2 class="ex">Convivencia</h2>
-        <p class="sec-lead">Semanas 1 a 8. Qué puede correr en paralelo y qué espera.</p>
+        <p class="sec-lead">Qué corre junto y qué espera.</p>
         <table>
           <thead>
-            <tr><th>Durante Foundations (sem. 1 a 8)</th><th>Puede convivir</th><th>No convive</th></tr>
+            <tr><th></th><th>Puede convivir</th><th>No convive</th></tr>
           </thead>
           <tbody>
-            <tr><td>Paid actual</td><td class="yes">Hold. Misma inversión, higiene mínima, sin scale-up.</td><td class="no">Subir presupuesto. Reestructurar bidding sobre last-click o vanity.</td></tr>
-            <tr><td>Agencia</td><td class="yes">Decisión en semana 1 y onboarding. Entran a leer cuentas y tags.</td><td class="no">Una campaña nueva grande antes del QA de medición.</td></tr>
-            <tr><td>Data y tableros</td><td class="yes">Limpieza y diccionario de KPIs en paralelo al tagging.</td><td class="no">Tratar el dashboard como fuente de verdad antes de que existan los eventos.</td></tr>
-            <tr><td>CRO</td><td class="yes">Hipótesis y baseline apenas el funnel se puede leer.</td><td class="no">Tests de conversión que piden atribución limpia en las primeras semanas.</td></tr>
-            <tr><td>Organización</td><td class="yes">Perfil del Growth Lead al final de Foundations.</td><td class="no">Armar un squad de siete personas en el mes 1.</td></tr>
-            <tr><td>Due diligence de agencia</td><td class="yes">Se puede. El Gantt tiene ese escenario.</td><td class="no">Kickoff la semana que viene y un RFP en el mismo calendario.</td></tr>
+            <tr><td>Sem. 1 a 2</td><td class="yes">Boceto de dashboard, ping-pong. Kickoff, accesos, foundations.</td><td class="no">Dashboard v1 como fuente. Campañas nuevas.</td></tr>
+            <tr><td>Sem. 2 a 3</td><td class="yes">Medición y data warehouse. Auditoría de paid actual. Cierre del boceto.</td><td class="no">Primeras campañas nuevas. Escala.</td></tr>
+            <tr><td>Sem. 4</td><td class="yes">Alertas, dashboard v1 y primeras campañas, en paralelo.</td><td class="no">Escenarios de escala.</td></tr>
+            <tr><td>Sem. 5 a 6</td><td class="yes">Iteración del dashboard y escenarios de escala.</td><td class="no"></td></tr>
+            <tr><td>RFP</td><td class="yes">Foundations arranca igual.</td><td class="no">Campañas y escala en el mismo calendario. +4 semanas.</td></tr>
           </tbody>
         </table>
       </section>
@@ -408,7 +391,7 @@ td.num{font-family:"Geist Mono",ui-monospace,monospace;font-size:12.5px;white-sp
           <article class="ch pick">
             <div class="tag">Recomendado</div>
             <h3>ABN, con Mitu al frente</h3>
-            <p>Se nombra en el kickoff. Onboarding en semanas 2 y 3, en paralelo a Foundations. La reestructura de campañas espera al QA.</p>
+            <p>Se nombra en el kickoff. Auditoría de paid en paralelo a Foundations. Primeras campañas desde semana 4.</p>
             <ul>
               <li>Candidata de quien lidera la agencia.</li>
               <li>Auditoría del 16 de septiembre: tres GTM, tres GA4, dos pixels en solicitud.escampa.mx.</li>
@@ -426,48 +409,6 @@ td.num{font-family:"Geist Mono",ui-monospace,monospace;font-size:12.5px;white-sp
             <p>Misma fecha de arranque. Cláusula de salida a los tres meses si el fit no está. No se pierde el mes del RFP.</p>
           </article>
         </div>
-      </section>
-
-      <section id="costos">
-        <span class="ex-n">Exhibit 6</span>
-        <h2 class="ex">Costos</h2>
-        <p class="sec-lead">Proyecto puntual (Foundations) y ongoing (paid). Ballpark para decidir. Cotización en la reunión de detalle. Media, nube y sueldos aparte.</p>
-        <div class="cost">
-          <div>
-            <div class="kicker">Proyecto. Foundations</div>
-            <div class="amt">USD 22 a 32k</div>
-            <p class="sub">Ocho a diez semanas. Tracking y consolidación GTM/GA4, UTMs y CRM, limpieza, diccionario de KPIs, dashboards v1 y v2, baseline de CRO, QA hasta fondeo. Un pago de proyecto.</p>
-          </div>
-          <div>
-            <div class="kicker">Retainer. Ejecución paid</div>
-            <div class="amt">USD 5 a 8k / mes</div>
-            <p class="sub">Desde la etapa 2. Cubre operatoria, iteración y la reunión semanal. El media spend lo paga Escampa a las plataformas. Cloud y APIs se facturan aparte cuando el setup existe.</p>
-          </div>
-        </div>
-        <p class="fine">Afuera del rango: honorarios de Mitu, salario del Growth Lead (mes 6), squad (mes 12), IVA. Supuesto: dos dominios, medición del 16 de septiembre. No es fee cerrado.</p>
-      </section>
-
-      <section id="decision">
-        <span class="ex-n">Exhibit 7</span>
-        <h2 class="ex">Próximos pasos</h2>
-        <ol class="next">
-          <li>
-            <h3>Nombrar la agencia</h3>
-            <p>ABN ahora, ABN a 90 días, o RFP.</p>
-          </li>
-          <li>
-            <h3>Accesos de Foundations</h3>
-            <p>GTM, GA4, Ads, Meta y un usuario de prueba hasta fondeo.</p>
-          </li>
-          <li>
-            <h3>Kickoff 21 de septiembre</h3>
-            <p>Cadencia, dueños, freeze de tags. CEO y COO.</p>
-          </li>
-          <li>
-            <h3>Cotización</h3>
-            <p>Proyecto Foundations. Retainer de ejecución. Fecha de arranque.</p>
-          </li>
-        </ol>
         <div class="foot">
           <div>Escampa · roadmap de growth · septiembre 2026</div>
           <div>Válido como base de kickoff por 30 días</div>
@@ -495,47 +436,28 @@ td.num{font-family:"Geist Mono",ui-monospace,monospace;font-size:12.5px;white-sp
 
 <script>
 const WEEK0 = new Date(2026, 8, 21);
+const COLS = 10;
 const LANES = [
-  { id: "gov", name: "Gobierno" },
-  { id: "med", name: "Medición" },
-  { id: "data", name: "Data y tableros" },
-  { id: "cro", name: "CRO" },
-  { id: "paid", name: "Paid media" },
-  { id: "org", name: "Organización" }
+  { id: "kick", name: "Kickoff" },
+  { id: "found", name: "Foundations" },
+  { id: "rep", name: "Reporting" },
+  { id: "paid", name: "Paid media" }
 ];
 const TASKS = [
-  { id:"kickoff", name:"Kickoff", lane:"gov", stage:1, start:0, dur:1, owner:"Mitu + Escampa", deps:[], unlocks:["cadencia","inventario","kpis"], co:"Decisión de agencia. Freeze de tags.", noco:"Esperar un comité.", note:"Semana del 21 de septiembre. Alcance, dueños, cadencia." },
-  { id:"cadencia", name:"Cadencia semanal Mitu", lane:"gov", stage:1, start:0, dur:72, owner:"Mitu", deps:["kickoff"], unlocks:["ritual"], co:"Todas las etapas.", noco:"Reuniones solo cuando hay un incidente.", note:"Mitu prioriza el roadmap y revisa que la ejecución responda a aprobación y fondeo." },
-  { id:"ritual", name:"Ritual de performance", lane:"gov", stage:2, start:6, dur:66, owner:"Mitu + agencia", deps:["dash1"], unlocks:["exp-paid","escala"], co:"Dashboard v1. Paid en reestructura.", noco:"Usar solo Ads Manager o un Excel suelto.", note:"Empieza cuando existe el dashboard v1. Semanal. KPIs de negocio." },
-  { id:"inventario", name:"Inventario y freeze de tags", lane:"med", stage:1, start:0, dur:2, owner:"Medición", deps:["kickoff"], unlocks:["gtm"], co:"Taxonomía de eventos. Paid en hold.", noco:"Sumar más contenedores.", note:"El 16 de septiembre: tres GTM, tres GA4 y dos pixels de Meta en solicitud.escampa.mx." },
-  { id:"taxonomia", name:"Taxonomía campaña a fondeo", lane:"med", stage:1, start:0, dur:3, owner:"Medición + producto", deps:["kickoff"], unlocks:["utm","qa"], co:"Diccionario de KPIs. Inventario de tags.", noco:"Pageview o clic como KPI.", note:"Eventos a nombrar: campaña, solicitud, aprobación, fondeo." },
-  { id:"utm", name:"UTMs y mapeo a CRM", lane:"med", stage:1, start:1, dur:3, owner:"Medición", deps:["taxonomia"], unlocks:["qa"], co:"Consolidación GTM. Limpieza de data.", noco:"Parámetros distintos por campaña.", note:"Estándar único. Persistencia entre escampa.mx y solicitud.escampa.mx. Puente al CRM." },
-  { id:"gtm", name:"Consolidar GTM / GA4", lane:"med", stage:1, start:1, dur:4, owner:"Medición", deps:["inventario"], unlocks:["consent","qa"], co:"UTMs. Paid en hold.", noco:"Tres propiedades en paralelo.", note:"De tres contenedores a uno. Lo que no se usa se apaga." },
-  { id:"consent", name:"Consentimiento cross-domain", lane:"med", stage:1, start:2, dur:3, owner:"Medición + legal", deps:["gtm"], unlocks:["qa"], co:"Consolidación de tags.", noco:"Disparar marketing en solicitud sin CMP.", note:"El banner está en escampa.mx. solicitud.escampa.mx dispara tags al cargar." },
-  { id:"qa", name:"QA end-to-end hasta fondeo", lane:"med", stage:1, start:4, dur:2, owner:"Medición + producto", deps:["taxonomia","utm","gtm","consent"], unlocks:["conv","cro-base","dash2"], co:"Dashboard v1 en construcción.", noco:"Escala de paid. CRO con atribución.", note:"Usuario de prueba: KYC, oferta, contrato, depósito. Si el evento no sale, la etapa 2 espera." },
-  { id:"conv", name:"Conversiones finales en Google / Meta", lane:"med", stage:1, start:5, dur:2, owner:"Medición + agencia", deps:["qa"], unlocks:["reest"], co:"Onboarding de agencia.", noco:"Optimizar a lead o a clic.", note:"Google y Meta reciben aprobación y fondeo." },
-  { id:"kpis", name:"Diccionario de KPIs", lane:"data", stage:1, start:0, dur:3, owner:"Mitu + Escampa", deps:["kickoff"], unlocks:["dash1"], co:"Taxonomía de eventos.", noco:"Un KPI distinto por canal.", note:"Definir solicitud, aprobación y crédito fondeado." },
-  { id:"clean", name:"Limpieza de data histórica", lane:"data", stage:1, start:1, dur:4, owner:"Data", deps:["kickoff"], unlocks:["dash1"], co:"Tagging. UTMs.", noco:"Usar el histórico sucio para scale-up.", note:"Ordenar fuentes actuales. No es un warehouse de 18 meses." },
-  { id:"dash1", name:"Dashboard v1, adquisición a solicitud", lane:"data", stage:1, start:3, dur:4, owner:"Data", deps:["kpis","clean"], unlocks:["ritual","dash2"], co:"QA de medición. Paid en hold.", noco:"Tomarlo como fuente de verdad antes del QA.", note:"Cubre frente del funnel cuando existen los eventos de adquisición y solicitud." },
-  { id:"dash2", name:"Dashboard v2, aprobación a fondeo", lane:"data", stage:1, start:5, dur:4, owner:"Data + producto", deps:["dash1","qa"], unlocks:["escala"], co:"Reestructura de campañas.", noco:"Escalar sin ver el crédito fondeado.", note:"Tablero para discutir presupuesto." },
-  { id:"cro-base", name:"Baseline de funnel", lane:"cro", stage:1, start:5, dur:3, owner:"CRO / medición", deps:["qa"], unlocks:["hip","cro-exp"], co:"Dashboard v1.", noco:"Tests A/B en semana 2.", note:"Caídas del funnel con una o dos semanas de data limpia. Después, hipótesis." },
-  { id:"hip", name:"Backlog de hipótesis CRO", lane:"cro", stage:2, start:6, dur:2, owner:"CRO + Mitu", deps:["cro-base"], unlocks:["cro-exp"], co:"Reestructura paid.", noco:"Rediseñar el sitio entero.", note:"Hipótesis sobre solicitud, KYC y oferta." },
-  { id:"cro-exp", name:"Primeros experimentos CRO", lane:"cro", stage:2, start:8, dur:8, owner:"CRO + agencia", deps:["hip","qa"], unlocks:[], co:"Experimentación paid.", noco:"Tests sin QA de medición.", note:"Empiezan cuando el funnel se lee. Si hay RFP, pueden arrancar con Mitu y producto." },
-  { id:"hold", name:"Paid en hold", lane:"paid", stage:1, start:0, dur:6, hold:true, rfpExtend:4, owner:"Quien opere el paid hoy", deps:[], unlocks:["reest"], co:"Todo Foundations. Onboarding de agencia.", noco:"Subir presupuesto. Campañas nuevas de scale-up.", note:"Misma inversión. Higiene mínima. Sin scale-up." },
-  { id:"onboard", name:"Onboarding de agencia", lane:"paid", stage:2, start:1, dur:2, rfp:4, owner:"ABN, liderada por Mitu", deps:["agencia"], unlocks:["reest"], co:"Foundations. Paid en hold.", noco:"Pedir scale-up en la semana 2.", note:"Accesos, naming, brief, lectura del inventario." },
-  { id:"reest", name:"Reestructura Google / Meta", lane:"paid", stage:2, start:6, dur:3, rfp:4, owner:"Agencia", deps:["conv","onboard"], unlocks:["exp-paid","escala"], co:"Dashboard v2 en construcción. CRO baseline.", noco:"Hold sin fecha de corte. Suba grande de presupuesto.", note:"Campañas contra aprobación y fondeo. Primer trabajo de la etapa 2." },
-  { id:"exp-paid", name:"Cadencia de experimentación paid", lane:"paid", stage:2, start:7, dur:17, rfp:4, owner:"Agencia", deps:["reest"], unlocks:["escala"], co:"CRO. Ritual semanal.", noco:"Cambiar todo cada semana.", note:"Un backlog. Mitu prioriza." },
-  { id:"escala", name:"Escala controlada", lane:"paid", stage:2, start:9, dur:15, rfp:4, owner:"Agencia + Mitu", deps:["reest","dash2","ritual"], unlocks:[], co:"Experimentación. Dashboard v2.", noco:"Escala en Foundations. Escala sin fondeo visible.", note:"Dos o tres semanas de señal limpia. Después se mueve presupuesto." },
-  { id:"agencia", name:"Decisión de agencia", lane:"org", stage:1, start:0, dur:1, rfpDur:4, owner:"CEO + COO", deps:[], unlocks:["onboard"], co:"Kickoff. Foundations.", noco:"Kickoff y RFP en el mismo calendario.", note:"ABN ahora, ABN a 90 días, o RFP. El interruptor RFP modela el tercer camino." },
-  { id:"perfil", name:"Perfil del Growth Lead", lane:"org", stage:3, start:9, dur:3, owner:"Escampa + Mitu", deps:[], unlocks:["search"], co:"Ejecución ya en curso.", noco:"Pedirle al lead que arme Foundations.", note:"Se escribe al final de Foundations, cuando el sistema ya se ve." },
-  { id:"search", name:"Búsqueda del Growth Lead", lane:"org", stage:3, start:16, dur:8, owner:"Escampa", deps:["perfil"], unlocks:["lead"], co:"Ejecución con agencia.", noco:"Congelar la agencia esperando al lead.", note:"Meses 4 a 6. La agencia sigue." },
-  { id:"lead", name:"Growth Lead en rol", lane:"org", stage:3, start:24, dur:24, owner:"Growth Lead + Mitu", deps:["search"], unlocks:["squad-hire"], co:"Agencia. Ritual. Experimentación.", noco:"Que Mitu salga el día 1 del lead.", note:"Meses 6 a 12. El lead toma más decisiones. Mitu acompaña. La agencia ejecuta." },
-  { id:"squad-hire", name:"Contratación del squad", lane:"org", stage:4, start:36, dur:16, owner:"Growth Lead", deps:["lead"], unlocks:["squad"], co:"Agencia en paralelo, con menos peso.", noco:"Siete contrataciones en el mismo mes.", note:"Paid/analyst, CRO, UX, data, martech, creative. El backlog marca el orden." },
-  { id:"squad", name:"Squad interno", lane:"org", stage:4, start:48, dur:24, owner:"Escampa", deps:["squad-hire"], unlocks:[], co:"Agencia para picos y especialidad.", noco:"Dependencia táctica semanal de la agencia.", note:"Escampa lidera adquisición, conversión, approval, fondeo y LTV." }
+  { id:"kickoff", name:"Kickoff y accesos", lane:"kick", stage:1, start:0, dur:1, owner:"Mitu + Escampa", deps:[], unlocks:["med","wh","audit","boceto"], co:"Boceto de dashboard.", noco:"Esperar un comité.", note:"Arranca semana 1. Accesos a GTM, GA4, Ads, Meta, warehouse y usuario de prueba." },
+  { id:"boceto", name:"Boceto de dashboard", lane:"rep", stage:1, start:0, dur:2, owner:"Data + Mitu + Escampa", deps:[], unlocks:["dash1"], co:"Kickoff, accesos. Foundations desde semana 2.", noco:"Tomar el boceto como tablero en producción.", note:"Arranca semana 1. Ping-pong las primeras 2 semanas, en paralelo." },
+  { id:"med", name:"Medición", lane:"found", stage:1, start:1, dur:4, owner:"Medición", deps:["kickoff"], unlocks:["alertas","dash1","camp"], co:"Data warehouse. Auditoría paid. Boceto.", noco:"Campañas nuevas antes de semana 4.", note:"Arranca semana 2. Medir bien: eventos, UTMs, consolidación GTM/GA4." },
+  { id:"wh", name:"Data warehouse", lane:"found", stage:1, start:1, dur:4, owner:"Data", deps:["kickoff"], unlocks:["alertas","dash1"], co:"Medición. Auditoría paid. Boceto.", noco:"Dashboard v1 sin capa de datos.", note:"Arranca semana 2. Colectar bien." },
+  { id:"audit", name:"Auditoría de paid actual", lane:"paid", stage:1, start:1, dur:2, owner:"Agencia", deps:["kickoff"], unlocks:["camp"], co:"Medición y warehouse.", noco:"Scale-up sobre la estructura actual.", note:"Arranca semana 2, en paralelo a Foundations." },
+  { id:"alertas", name:"Alertas", lane:"rep", stage:2, start:3, dur:3, owner:"Data", deps:["med","wh"], unlocks:[], co:"Dashboard v1. Primeras campañas.", noco:"", note:"Arranca semana 4. Fila aparte del dashboard v1." },
+  { id:"dash1", name:"Dashboard v1", lane:"rep", stage:2, start:3, dur:3, owner:"Data", deps:["boceto","med","wh"], unlocks:["dashit"], co:"Alertas. Primeras campañas.", noco:"", note:"Arranca semana 4. Parte del boceto ping-pongeado en semanas 1 y 2." },
+  { id:"camp", name:"Primeras campañas e iteraciones", lane:"paid", stage:2, start:3, dur:5, rfp:4, owner:"Agencia, Mitu al frente", deps:["audit"], unlocks:["escala"], co:"Alertas y dashboard v1.", noco:"Escenarios de escala en semana 4.", note:"Arranca semana 4, en paralelo a alertas y dashboard v1." },
+  { id:"dashit", name:"Iteraciones de dashboard", lane:"rep", stage:2, start:4, dur:4, owner:"Data", deps:["dash1"], unlocks:[], co:"Escenarios de escala.", noco:"", note:"Arranca semanas 5 a 6." },
+  { id:"escala", name:"Escenarios de escala", lane:"paid", stage:2, start:4, dur:4, rfp:4, owner:"Agencia + Mitu", deps:["camp"], unlocks:[], co:"Iteraciones de dashboard.", noco:"", note:"Arranca semanas 5 a 6." }
 ];
 
 const byId = Object.fromEntries(TASKS.map(t => [t.id, t]));
-const state = { scale: "weeks", rfp: false, filter: "all", open: null };
+const state = { rfp: false, open: null };
 
 function addWeeks(d, n){ const x = new Date(d); x.setDate(x.getDate() + n * 7); return x; }
 function fmtWeek(n){
@@ -557,59 +479,27 @@ function resolved(t){
   return { ...t, start, dur };
 }
 
-function cols(){
-  return state.scale === "weeks" ? 12 : 18;
-}
-function toCol(week){
-  return state.scale === "weeks" ? week : week / 4;
-}
+function cols(){ return COLS; }
 function clip(t){
-  const n = cols();
-  const s = toCol(t.start);
-  const e = toCol(t.start + t.dur);
+  const n = COLS;
+  const s = t.start, e = t.start + t.dur;
   if (e <= 0 || s >= n) return null;
   const cs = Math.max(0, s);
   const ce = Math.min(n, e);
   return { left: (cs / n) * 100, width: ((ce - cs) / n) * 100, cont: e > n + 0.01 };
 }
-
 function stageBand(){
-  if (state.scale === "weeks"){
-    const n = 12;
-    return [
-      { cls:"s1", label:"Foundations", start:0, end:8 },
-      { cls:"s2", label:"Ejecución", start:6, end:12 }
-    ].map(b => ({ ...b, flex: b.end - b.start, left: b.start / n }));
-  }
   return [
-    { cls:"s1", label:"Foundations", start:0, end:2 },
-    { cls:"s2", label:"Ejecución", start:2, end:6 },
-    { cls:"s3", label:"Internalizar", start:6, end:12 },
-    { cls:"s4", label:"Squad", start:12, end:18 }
+    { cls:"s1", label:"Foundations", start:0, end:3 },
+    { cls:"s2", label:"Ejecución", start:3, end:10 }
   ];
 }
-
 function ticks(){
-  const n = cols();
   const out = [];
-  for (let i = 0; i < n; i++){
-    out.push(state.scale === "weeks" ? (i === 0 ? "21 sep" : "S" + (i + 1)) : monthLabel(i));
-  }
+  for (let i = 0; i < COLS; i++) out.push(i === 0 ? "21 sep" : "S" + (i + 1));
   return out;
 }
-function monthLabel(i){
-  const m = ["Sep","Oct","Nov","Dic","Ene","Feb","Mar","Abr","May","Jun","Jul","Ago"];
-  const label = m[i % 12];
-  if (i === 0) return "Sep 26";
-  if (i === 4) return "Ene 27";
-  if (i === 16) return "Ene 28";
-  return label;
-}
-
-function visible(t){
-  if (state.filter !== "all" && String(t.stage) !== state.filter) return false;
-  return clip(t) !== null;
-}
+function visible(t){ return clip(t) !== null; }
 
 function pack(tasks){
   const rows = [];
@@ -694,24 +584,9 @@ function close(){
   renderGantt();
 }
 
-function renderFilters(){
-  const labels = [["all","Todas"],["1","Foundations"],["2","Ejecución"],["3","Internalizar"],["4","Squad"]];
-  document.getElementById("filters").innerHTML = labels.map(([v,l]) =>
-    `<button type="button" data-f="${v}" aria-pressed="${state.filter===v}">${l}</button>`
-  ).join("");
-  document.getElementById("filters").onclick = e => {
-    const b = e.target.closest("button"); if (!b) return;
-    state.filter = b.dataset.f; renderFilters(); renderGantt();
-  };
-}
-
-document.getElementById("btn-weeks").onclick = () => { state.scale = "weeks"; syncSeg(); renderGantt(); };
-document.getElementById("btn-months").onclick = () => { state.scale = "months"; syncSeg(); renderGantt(); };
 document.getElementById("btn-abn").onclick = () => { state.rfp = false; syncSeg(); renderGantt(); };
 document.getElementById("btn-rfp").onclick = () => { state.rfp = true; syncSeg(); renderGantt(); };
 function syncSeg(){
-  document.getElementById("btn-weeks").setAttribute("aria-pressed", state.scale === "weeks");
-  document.getElementById("btn-months").setAttribute("aria-pressed", state.scale === "months");
   document.getElementById("btn-abn").setAttribute("aria-pressed", !state.rfp);
   document.getElementById("btn-rfp").setAttribute("aria-pressed", state.rfp);
 }
@@ -729,7 +604,6 @@ const io = new IntersectionObserver(entries => {
 }, { rootMargin: "-40% 0px -50% 0px" });
 secs.forEach(s => io.observe(s));
 
-renderFilters();
 renderGantt();
 </script>
 </body>
