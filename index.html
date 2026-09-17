@@ -127,7 +127,7 @@ h2.ex{
   position:relative;background:var(--surface);border:1px solid var(--hair);
   overflow:auto;max-height:min(78vh,820px);
 }
-.gantt{min-width:920px;--lane:156px;--row:52px;--bar-h:26px}
+.gantt{min-width:1080px;--lane:156px;--row:52px;--bar-h:26px}
 .head,.lane{display:grid;grid-template-columns:var(--lane) 1fr}
 .head{position:sticky;top:0;z-index:3;background:var(--surface);border-bottom:1px solid var(--hair)}
 .corner{position:sticky;left:0;z-index:4;background:var(--surface);border-right:1px solid var(--hair);padding:10px 12px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);font-weight:700}
@@ -305,13 +305,9 @@ td.num{font-family:"Geist Mono",ui-monospace,monospace;font-size:12.5px;white-sp
       <section id="gantt">
         <span class="ex-n">Exhibit 2</span>
         <h2 class="ex">Gantt</h2>
-        <p class="sec-lead">La semana marcada es el arranque. La barra es la duración. Cuatro carriles. RFP corre paid 4 semanas.</p>
+        <p class="sec-lead">Cuatro meses, 16 semanas. La semana marcada es el arranque. La barra es la duración.</p>
 
         <div class="toolbar">
-          <div class="seg" role="group" aria-label="Camino de agencia">
-            <button type="button" id="btn-abn" aria-pressed="true">ABN ahora</button>
-            <button type="button" id="btn-rfp" aria-pressed="false">RFP +4 sem</button>
-          </div>
           <div class="legend">
             <span><span class="swatch c1"></span>Foundations</span>
             <span><span class="swatch c2"></span>Ejecución</span>
@@ -319,7 +315,7 @@ td.num{font-family:"Geist Mono",ui-monospace,monospace;font-size:12.5px;white-sp
         </div>
         <div class="gantt-shell" id="gantt-shell"></div>
         <div class="list" id="list"></div>
-        <p class="hint">Semana 1: 21 al 27 de septiembre de 2026.</p>
+        <p class="hint">Semana 1: 21 al 27 de septiembre de 2026. El eje cubre 16 semanas, hasta mediados de enero.</p>
       </section>
 
       <section id="etapas">
@@ -378,7 +374,6 @@ td.num{font-family:"Geist Mono",ui-monospace,monospace;font-size:12.5px;white-sp
             <tr><td>Sem. 2 a 3</td><td class="yes">Medición y data warehouse. Auditoría de paid actual. Cierre del boceto.</td><td class="no">Primeras campañas nuevas. Escala.</td></tr>
             <tr><td>Sem. 4</td><td class="yes">Alertas, dashboard v1 y primeras campañas, en paralelo.</td><td class="no">Escenarios de escala.</td></tr>
             <tr><td>Sem. 5 a 6</td><td class="yes">Iteración del dashboard y escenarios de escala.</td><td class="no"></td></tr>
-            <tr><td>RFP</td><td class="yes">Foundations arranca igual.</td><td class="no">Campañas y escala en el mismo calendario. +4 semanas.</td></tr>
           </tbody>
         </table>
       </section>
@@ -436,7 +431,7 @@ td.num{font-family:"Geist Mono",ui-monospace,monospace;font-size:12.5px;white-sp
 
 <script>
 const WEEK0 = new Date(2026, 8, 21);
-const COLS = 10;
+const COLS = 16;
 const LANES = [
   { id: "kick", name: "Kickoff" },
   { id: "found", name: "Foundations" },
@@ -451,13 +446,13 @@ const TASKS = [
   { id:"audit", name:"Auditoría de paid actual", lane:"paid", stage:1, start:1, dur:2, owner:"Agencia", deps:["kickoff"], unlocks:["camp"], co:"Medición y warehouse.", noco:"Scale-up sobre la estructura actual.", note:"Arranca semana 2, en paralelo a Foundations." },
   { id:"alertas", name:"Alertas", lane:"rep", stage:2, start:3, dur:3, owner:"Data", deps:["med","wh"], unlocks:[], co:"Dashboard v1. Primeras campañas.", noco:"", note:"Arranca semana 4. Fila aparte del dashboard v1." },
   { id:"dash1", name:"Dashboard v1", lane:"rep", stage:2, start:3, dur:3, owner:"Data", deps:["boceto","med","wh"], unlocks:["dashit"], co:"Alertas. Primeras campañas.", noco:"", note:"Arranca semana 4. Parte del boceto ping-pongeado en semanas 1 y 2." },
-  { id:"camp", name:"Primeras campañas e iteraciones", lane:"paid", stage:2, start:3, dur:5, rfp:4, owner:"Agencia, Mitu al frente", deps:["audit"], unlocks:["escala"], co:"Alertas y dashboard v1.", noco:"Escenarios de escala en semana 4.", note:"Arranca semana 4, en paralelo a alertas y dashboard v1." },
-  { id:"dashit", name:"Iteraciones de dashboard", lane:"rep", stage:2, start:4, dur:4, owner:"Data", deps:["dash1"], unlocks:[], co:"Escenarios de escala.", noco:"", note:"Arranca semanas 5 a 6." },
-  { id:"escala", name:"Escenarios de escala", lane:"paid", stage:2, start:4, dur:4, rfp:4, owner:"Agencia + Mitu", deps:["camp"], unlocks:[], co:"Iteraciones de dashboard.", noco:"", note:"Arranca semanas 5 a 6." }
+  { id:"camp", name:"Primeras campañas e iteraciones", lane:"paid", stage:2, start:3, dur:8, owner:"Agencia, Mitu al frente", deps:["audit"], unlocks:["escala"], co:"Alertas y dashboard v1.", noco:"Escenarios de escala en semana 4.", note:"Arranca semana 4, en paralelo a alertas y dashboard v1." },
+  { id:"dashit", name:"Iteraciones de dashboard", lane:"rep", stage:2, start:4, dur:8, owner:"Data", deps:["dash1"], unlocks:[], co:"Escenarios de escala.", noco:"", note:"Arranca semanas 5 a 6." },
+  { id:"escala", name:"Escenarios de escala", lane:"paid", stage:2, start:4, dur:8, owner:"Agencia + Mitu", deps:["camp"], unlocks:[], co:"Iteraciones de dashboard.", noco:"", note:"Arranca semanas 5 a 6." }
 ];
 
 const byId = Object.fromEntries(TASKS.map(t => [t.id, t]));
-const state = { rfp: false, open: null };
+const state = { open: null };
 
 function addWeeks(d, n){ const x = new Date(d); x.setDate(x.getDate() + n * 7); return x; }
 function fmtWeek(n){
@@ -471,13 +466,7 @@ function fmtSpan(start, dur){
   const opt = { day:"numeric", month:"short", year:"numeric" };
   return a.toLocaleDateString("es-MX", opt) + " → " + b.toLocaleDateString("es-MX", opt);
 }
-function resolved(t){
-  const start = t.start + (state.rfp && t.rfp ? t.rfp : 0);
-  let dur = t.dur;
-  if (state.rfp && t.rfpDur) dur = t.rfpDur;
-  if (state.rfp && t.rfpExtend) dur = t.dur + t.rfpExtend;
-  return { ...t, start, dur };
-}
+function resolved(t){ return t; }
 
 function cols(){ return COLS; }
 function clip(t){
@@ -490,13 +479,15 @@ function clip(t){
 }
 function stageBand(){
   return [
-    { cls:"s1", label:"Foundations", start:0, end:3 },
-    { cls:"s2", label:"Ejecución", start:3, end:10 }
+    { cls:"s1", label:"Sep", start:0, end:4 },
+    { cls:"s2", label:"Oct", start:4, end:8 },
+    { cls:"s1", label:"Nov", start:8, end:12 },
+    { cls:"s2", label:"Dic / ene", start:12, end:16 }
   ];
 }
 function ticks(){
   const out = [];
-  for (let i = 0; i < COLS; i++) out.push(i === 0 ? "21 sep" : "S" + (i + 1));
+  for (let i = 0; i < COLS; i++) out.push("S" + (i + 1));
   return out;
 }
 function visible(t){ return clip(t) !== null; }
@@ -584,12 +575,6 @@ function close(){
   renderGantt();
 }
 
-document.getElementById("btn-abn").onclick = () => { state.rfp = false; syncSeg(); renderGantt(); };
-document.getElementById("btn-rfp").onclick = () => { state.rfp = true; syncSeg(); renderGantt(); };
-function syncSeg(){
-  document.getElementById("btn-abn").setAttribute("aria-pressed", !state.rfp);
-  document.getElementById("btn-rfp").setAttribute("aria-pressed", state.rfp);
-}
 document.getElementById("close").onclick = close;
 document.getElementById("scrim").onclick = close;
 document.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
