@@ -106,6 +106,12 @@ h2.ex{
 .stage ul{margin:10px 0 0;padding:0 0 0 16px;font-size:12.5px;color:var(--muted);font-weight:300;line-height:1.45}
 .stage li{margin:0 0 5px}
 .stage .when{margin-top:14px;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--navy)}
+.briefs{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--hair);border:1px solid var(--hair);margin-top:8px}
+.brief{background:var(--surface);padding:22px 20px 24px}
+.brief h3{font-size:15px;font-weight:600;margin:0 0 10px;color:var(--navy)}
+.brief ul{margin:0;padding:0 0 0 16px;font-size:13px;color:var(--muted);font-weight:300;line-height:1.45}
+.brief li{margin:0 0 6px}
+@media(max-width:800px){.briefs{grid-template-columns:1fr}}
 
 /* Gantt */
 .toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-bottom:16px}
@@ -161,6 +167,7 @@ h2.ex{
   font-size:11px;font-weight:500;color:#fff;text-align:left;white-space:nowrap;
   background:var(--navy);letter-spacing:-.01em;
   box-shadow:0 0 0 3px var(--surface);
+  user-select:none;
 }
 .bar.tight{
   height:auto;min-height:58px;white-space:normal;line-height:1.25;
@@ -189,6 +196,8 @@ h2.ex{
 .drawer dl{display:grid;gap:14px}
 .drawer dt{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:4px}
 .drawer dd{font-size:13.5px;color:var(--ink);font-weight:300;line-height:1.5}
+.drawer ul{margin:0 0 22px;padding:0 0 0 18px;font-size:13.5px;color:var(--ink);font-weight:300;line-height:1.5}
+.drawer li{margin:0 0 8px}
 .x{
   appearance:none;border:1px solid var(--hair-2);background:transparent;cursor:pointer;
   width:32px;height:32px;font-size:18px;line-height:1;color:var(--navy);float:right;
@@ -272,6 +281,7 @@ td.num{font-family:"Geist Mono",ui-monospace,monospace;font-size:12.5px;white-sp
       <a href="#principio"><span class="n">01</span>Diagnóstico</a>
       <a href="#secuencia"><span class="n">02</span>Etapas</a>
       <a href="#gantt"><span class="n">03</span>Gantt</a>
+      <a href="#detalle"><span class="n">04</span>Detalle</a>
     </nav>
     <div class="rail-foot">
       <b>Kickoff posible</b>
@@ -356,7 +366,103 @@ td.num{font-family:"Geist Mono",ui-monospace,monospace;font-size:12.5px;white-sp
         </div>
         <div class="gantt-shell" id="gantt-shell"></div>
         <div class="list" id="list"></div>
-        <p class="hint">Semana 1: 21 al 27 de septiembre de 2026. El eje cubre 16 semanas, hasta mediados de enero.</p>
+        <p class="hint">Semana 1: 21 al 27 de septiembre de 2026. Doble clic en una barra abre el alcance.</p>
+      </section>
+
+      <section id="detalle">
+        <span class="ex-n">Exhibit 3</span>
+        <h2 class="ex">Gantt double-click</h2>
+        <p class="sec-lead">El mismo texto que se abre al hacer doble clic en cada barra.</p>
+        <div class="briefs">
+          <article class="brief">
+            <h3>Kickoff y accesos</h3>
+            <ul>
+              <li>Alinear objetivos, alcance y responsables entre Escampa, MITU y la agencia.</li>
+              <li>Habilitar accesos a cuentas publicitarias, analítica, CRM y fuentes de datos.</li>
+              <li>Relevar el funnel actual y definir la dinámica semanal de trabajo.</li>
+            </ul>
+          </article>
+          <article class="brief">
+            <h3>Medición</h3>
+            <ul>
+              <li>Definir eventos y conversiones desde la visita hasta la aprobación y el fondeo.</li>
+              <li>Configurar UTMs e identificadores para vincular campañas con resultados del negocio.</li>
+              <li>Validar el tracking y corregir eventos faltantes o duplicados.</li>
+            </ul>
+          </article>
+          <article class="brief">
+            <h3>Data warehouse</h3>
+            <ul>
+              <li>Centralizar inversión publicitaria, solicitudes, aprobaciones y fondeos.</li>
+              <li>Unificar identificadores y criterios para cruzar las fuentes.</li>
+              <li>Automatizar la actualización de datos y los controles de calidad.</li>
+            </ul>
+          </article>
+          <article class="brief">
+            <h3>Alertas</h3>
+            <ul>
+              <li>Configurar avisos ante fallas de tracking o interrupciones de datos.</li>
+              <li>Detectar desvíos de inversión, costos y tasas de conversión.</li>
+              <li>Definir umbrales, responsables y acciones ante cada alerta.</li>
+            </ul>
+          </article>
+          <article class="brief">
+            <h3>Dashboard v1</h3>
+            <ul>
+              <li>Visualizar inversión y resultados del funnel por canal y campaña.</li>
+              <li>Incorporar costos por solicitud, aprobación y crédito fondeado.</li>
+              <li>Validar los resultados contra las fuentes internas de Escampa.</li>
+            </ul>
+          </article>
+          <article class="brief">
+            <h3>Iteraciones de dashboard</h3>
+            <ul>
+              <li>Incorporar aperturas por producto, audiencia y cohorte.</li>
+              <li>Comparar resultados con metas y períodos anteriores.</li>
+              <li>Ajustar vistas según las decisiones y necesidades del equipo.</li>
+            </ul>
+          </article>
+          <article class="brief">
+            <h3>Auditoría de Paid Media</h3>
+            <ul>
+              <li>Revisar estructura de cuentas, campañas, audiencias y anuncios.</li>
+              <li>Evaluar presupuesto, resultados históricos y señales de optimización.</li>
+              <li>Priorizar correcciones y oportunidades para el lanzamiento.</li>
+            </ul>
+          </article>
+          <article class="brief">
+            <h3>Primeras campañas e iteraciones</h3>
+            <ul>
+              <li>Lanzar campañas con objetivos vinculados a aprobaciones y fondeos.</li>
+              <li>Probar audiencias, creatividades y páginas de destino.</li>
+              <li>Optimizar semanalmente según costos y calidad de las solicitudes.</li>
+            </ul>
+          </article>
+          <article class="brief">
+            <h3>Primeros KPIs</h3>
+            <ul>
+              <li>Construir una línea de base de costos y conversiones por etapa.</li>
+              <li>Identificar diferencias de desempeño entre canales y campañas.</li>
+              <li>Evaluar tiempos entre solicitud, aprobación y fondeo para interpretar resultados.</li>
+            </ul>
+          </article>
+          <article class="brief">
+            <h3>Escenarios de escala</h3>
+            <ul>
+              <li>Proyectar inversión y créditos fondeados bajo distintos escenarios.</li>
+              <li>Definir condiciones para aumentar, mantener o reducir presupuesto.</li>
+              <li>Diseñar pruebas graduales de expansión e incrementalidad.</li>
+            </ul>
+          </article>
+          <article class="brief">
+            <h3>KPIs fundacionales definidos</h3>
+            <ul>
+              <li>Acordar metas de adquisición, aprobación y fondeo con Escampa.</li>
+              <li>Documentar fórmulas, fuentes y responsables de cada indicador.</li>
+              <li>Establecer una revisión periódica de resultados y decisiones de inversión.</li>
+            </ul>
+          </article>
+        </div>
         <div class="foot">
           <div>Escampa · roadmap de growth · septiembre 2026</div>
           <div>Válido como base de kickoff por 30 días</div>
@@ -371,13 +477,9 @@ td.num{font-family:"Geist Mono",ui-monospace,monospace;font-size:12.5px;white-sp
   <div class="kicker" id="d-stage"></div>
   <h3 id="d-title"></h3>
   <p class="meta" id="d-meta"></p>
+  <ul id="d-bullets"></ul>
   <dl>
     <div><dt>Dueño</dt><dd id="d-owner"></dd></div>
-    <div><dt>Depende de</dt><dd id="d-deps"></dd></div>
-    <div><dt>Desbloquea</dt><dd id="d-unlocks"></dd></div>
-    <div><dt>Convive con</dt><dd id="d-co"></dd></div>
-    <div><dt>No convive con</dt><dd id="d-noco"></dd></div>
-    <div><dt>Nota</dt><dd id="d-note"></dd></div>
   </dl>
 </aside>
 <div class="scrim" id="scrim"></div>
@@ -392,17 +494,61 @@ const LANES = [
   { id: "paid", name: "Paid media" }
 ];
 const TASKS = [
-  { id:"kickoff", name:"Kickoff y accesos", lane:"kick", stage:1, start:0, dur:1, owner:"Mitu + Escampa", deps:[], unlocks:["med","wh","audit"], co:"", noco:"Campañas nuevas.", note:"Arranca S1. Accesos a GTM, GA4, Ads, Meta, warehouse y usuario de prueba." },
-  { id:"med", name:"Medición", lane:"found", stage:1, start:1, dur:3, owner:"Medición", deps:["kickoff"], unlocks:["alertas","dash1","camp"], co:"Data warehouse. Auditoría de PM.", noco:"Campañas nuevas antes de S4.", note:"S2 a S4. Eventos, UTMs, consolidación GTM/GA4." },
-  { id:"wh", name:"Data warehouse", lane:"found", stage:1, start:1, dur:3, owner:"Data", deps:["kickoff"], unlocks:["alertas","dash1"], co:"Medición. Auditoría de PM.", noco:"Dashboard v1 sin capa de datos.", note:"S2 a S4. Colectar bien." },
-  { id:"audit", name:"Auditoría de PM", lane:"paid", stage:1, start:1, dur:2, owner:"Agencia", deps:["kickoff"], unlocks:["camp"], co:"Medición y warehouse.", noco:"Scale-up sobre la estructura actual.", note:"Arranca S2, en paralelo a Foundations." },
-  { id:"alertas", name:"Alertas", lane:"rep", stage:2, start:3, dur:3, owner:"Data", deps:["med","wh"], unlocks:[], co:"Dashboard v1. Primeras campañas.", noco:"", note:"Arranca S4. Fila aparte." },
-  { id:"dash1", name:"Dashboard v1", lane:"rep", stage:2, stack:"dash", start:3, dur:3, owner:"Data", deps:["med","wh"], unlocks:["dashit"], co:"Alertas. Primeras campañas.", noco:"", note:"Arranca S4. En S7 sigue iteraciones, misma línea." },
-  { id:"camp", name:"Primeras campañas e iteraciones", lane:"paid", stage:2, stack:"camp", start:3, dur:5, owner:"Agencia, Mitu al frente", deps:["audit"], unlocks:["escala"], co:"Alertas y dashboard v1. Primeros KPIs.", noco:"Escenarios de escala en S4.", note:"Arranca S4. Escala empieza cuando esto termina." },
-  { id:"dashit", name:"Iteraciones de dashboard", lane:"rep", stage:2, stack:"dash", start:6, dur:10, owner:"Data", deps:["dash1"], unlocks:[], co:"Campañas, después escala.", noco:"", note:"S7 a S16. Misma línea que dashboard v1." },
-  { id:"kpi1", name:"Primeros KPIs", lane:"paid", stage:2, stack:"kpi", start:6, dur:3, owner:"Mitu + Agencia", deps:["camp","dash1"], unlocks:["kpi2"], co:"Primeras campañas. Iteraciones de dashboard.", noco:"", note:"S7 a S9. Debajo de primeras campañas. En S10 siguen KPIs fundacionales, misma línea." },
-  { id:"kpi2", name:"KPIs fundacionales definidos", lane:"paid", stage:2, stack:"kpi", start:9, dur:7, owner:"Mitu + Agencia", deps:["kpi1"], unlocks:[], co:"Escenarios de escala. Iteraciones de dashboard.", noco:"", note:"S10 a S16. Misma línea que primeros KPIs." },
-  { id:"escala", name:"Escenarios de escala", lane:"paid", stage:2, stack:"camp", start:8, dur:8, owner:"Agencia + Mitu", deps:["camp"], unlocks:[], co:"Iteraciones de dashboard. KPIs fundacionales.", noco:"Solaparse con las primeras campañas.", note:"Arranca después de primeras campañas e iteraciones (S9)." }
+  { id:"kickoff", name:"Kickoff y accesos", lane:"kick", stage:1, start:0, dur:1, owner:"Mitu + Escampa", deps:[], unlocks:["med","wh","audit"], bullets:[
+    "Alinear objetivos, alcance y responsables entre Escampa, MITU y la agencia.",
+    "Habilitar accesos a cuentas publicitarias, analítica, CRM y fuentes de datos.",
+    "Relevar el funnel actual y definir la dinámica semanal de trabajo."
+  ]},
+  { id:"med", name:"Medición", lane:"found", stage:1, start:1, dur:3, owner:"Medición", deps:["kickoff"], unlocks:["alertas","dash1","camp"], bullets:[
+    "Definir eventos y conversiones desde la visita hasta la aprobación y el fondeo.",
+    "Configurar UTMs e identificadores para vincular campañas con resultados del negocio.",
+    "Validar el tracking y corregir eventos faltantes o duplicados."
+  ]},
+  { id:"wh", name:"Data warehouse", lane:"found", stage:1, start:1, dur:3, owner:"Data", deps:["kickoff"], unlocks:["alertas","dash1"], bullets:[
+    "Centralizar inversión publicitaria, solicitudes, aprobaciones y fondeos.",
+    "Unificar identificadores y criterios para cruzar las fuentes.",
+    "Automatizar la actualización de datos y los controles de calidad."
+  ]},
+  { id:"audit", name:"Auditoría de Paid Media", lane:"paid", stage:1, start:1, dur:2, owner:"Agencia", deps:["kickoff"], unlocks:["camp"], bullets:[
+    "Revisar estructura de cuentas, campañas, audiencias y anuncios.",
+    "Evaluar presupuesto, resultados históricos y señales de optimización.",
+    "Priorizar correcciones y oportunidades para el lanzamiento."
+  ]},
+  { id:"alertas", name:"Alertas", lane:"rep", stage:2, start:3, dur:3, owner:"Data", deps:["med","wh"], unlocks:[], bullets:[
+    "Configurar avisos ante fallas de tracking o interrupciones de datos.",
+    "Detectar desvíos de inversión, costos y tasas de conversión.",
+    "Definir umbrales, responsables y acciones ante cada alerta."
+  ]},
+  { id:"dash1", name:"Dashboard v1", lane:"rep", stage:2, stack:"dash", start:3, dur:3, owner:"Data", deps:["med","wh"], unlocks:["dashit"], bullets:[
+    "Visualizar inversión y resultados del funnel por canal y campaña.",
+    "Incorporar costos por solicitud, aprobación y crédito fondeado.",
+    "Validar los resultados contra las fuentes internas de Escampa."
+  ]},
+  { id:"camp", name:"Primeras campañas e iteraciones", lane:"paid", stage:2, stack:"camp", start:3, dur:5, owner:"Agencia, Mitu al frente", deps:["audit"], unlocks:["escala"], bullets:[
+    "Lanzar campañas con objetivos vinculados a aprobaciones y fondeos.",
+    "Probar audiencias, creatividades y páginas de destino.",
+    "Optimizar semanalmente según costos y calidad de las solicitudes."
+  ]},
+  { id:"dashit", name:"Iteraciones de dashboard", lane:"rep", stage:2, stack:"dash", start:6, dur:10, owner:"Data", deps:["dash1"], unlocks:[], bullets:[
+    "Incorporar aperturas por producto, audiencia y cohorte.",
+    "Comparar resultados con metas y períodos anteriores.",
+    "Ajustar vistas según las decisiones y necesidades del equipo."
+  ]},
+  { id:"kpi1", name:"Primeros KPIs", lane:"paid", stage:2, stack:"kpi", start:6, dur:3, owner:"Mitu + Agencia", deps:["camp","dash1"], unlocks:["kpi2"], bullets:[
+    "Construir una línea de base de costos y conversiones por etapa.",
+    "Identificar diferencias de desempeño entre canales y campañas.",
+    "Evaluar tiempos entre solicitud, aprobación y fondeo para interpretar resultados."
+  ]},
+  { id:"kpi2", name:"KPIs fundacionales definidos", lane:"paid", stage:2, stack:"kpi", start:9, dur:7, owner:"Mitu + Agencia", deps:["kpi1"], unlocks:[], bullets:[
+    "Acordar metas de adquisición, aprobación y fondeo con Escampa.",
+    "Documentar fórmulas, fuentes y responsables de cada indicador.",
+    "Establecer una revisión periódica de resultados y decisiones de inversión."
+  ]},
+  { id:"escala", name:"Escenarios de escala", lane:"paid", stage:2, stack:"camp", start:8, dur:8, owner:"Agencia + Mitu", deps:["camp"], unlocks:[], bullets:[
+    "Proyectar inversión y créditos fondeados bajo distintos escenarios.",
+    "Definir condiciones para aumentar, mantener o reducir presupuesto.",
+    "Diseñar pruebas graduales de expansión e incrementalidad."
+  ]}
 ];
 
 const byId = Object.fromEntries(TASKS.map(t => [t.id, t]));
@@ -478,7 +624,10 @@ function renderGantt(){
     return `<div class="lane"><div class="lane-name">${lane.name}</div><div class="track" style="min-height:${h}px">${gl}${bars}</div></div>`;
   }).join("");
   shell.innerHTML = `<div class="gantt"><div class="head"><div class="corner">Carril</div><div class="cols">${monthHtml}${tickHtml}</div></div>${lanes}</div>`;
-  shell.querySelectorAll(".bar").forEach(b => b.addEventListener("click", () => openTask(b.dataset.id)));
+  shell.querySelectorAll(".bar").forEach(b => {
+    b.addEventListener("click", e => e.preventDefault());
+    b.addEventListener("dblclick", () => openTask(b.dataset.id));
+  });
   renderList();
 }
 
@@ -505,11 +654,7 @@ function openTask(id){
   document.getElementById("d-title").textContent = t.name;
   document.getElementById("d-meta").textContent = fmtSpan(t.start, t.dur) + " · " + t.dur + (t.dur === 1 ? " semana" : " semanas");
   document.getElementById("d-owner").textContent = t.owner;
-  document.getElementById("d-deps").textContent = names(t.deps);
-  document.getElementById("d-unlocks").textContent = names(t.unlocks);
-  document.getElementById("d-co").textContent = t.co;
-  document.getElementById("d-noco").textContent = t.noco;
-  document.getElementById("d-note").textContent = t.note;
+  document.getElementById("d-bullets").innerHTML = (t.bullets || []).map(x => `<li>${x}</li>`).join("");
   document.getElementById("drawer").classList.add("open");
   document.getElementById("drawer").setAttribute("aria-hidden", "false");
   document.getElementById("scrim").classList.add("on");
