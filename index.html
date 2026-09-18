@@ -306,7 +306,7 @@ td.num{font-family:"Geist Mono",ui-monospace,monospace;font-size:12.5px;white-sp
   <div class="main">
     <div class="wrap">
       <header class="hero" id="principio">
-        <h1>ESCAMPA <span class="sep">|</span> Roadmap de Growth</h1>
+        <h1>ESCAMPA <span class="sep">|</span> <span data-en="Growth Roadmap">Roadmap de Growth</span></h1>
         <p class="lead" data-en="From building the basics to an internal growth capability">De construir los basics a desarrollar una capacidad interna de crecimiento</p>
         <div class="principle">
           <p class="kicker" data-en="Guiding principle">Principio rector</p>
@@ -665,6 +665,7 @@ secs.forEach(s => io.observe(s));
 
 function applyLang(){
   document.documentElement.lang = state.lang;
+  document.title = state.lang === "en" ? "ESCAMPA | Growth Roadmap" : "ESCAMPA | Roadmap de Growth";
   document.querySelectorAll("[data-en]").forEach(el => {
     if (!el.dataset.es) el.dataset.es = el.textContent;
     el.textContent = state.lang === "en" ? el.dataset.en : el.dataset.es;
