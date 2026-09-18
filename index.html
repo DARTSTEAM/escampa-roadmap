@@ -140,10 +140,10 @@ h2.ex{
   padding:8px 14px;font-size:12px;font-weight:600;color:var(--navy);text-decoration:none;
 }
 .deck:hover{background:var(--navy);color:#fff}
-.fees{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--hair);border:1px solid var(--hair)}
+.fees{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--hair);border:1px solid var(--hair)}
 .fee{background:var(--surface);padding:22px 20px 24px}
 .fee .k{font-family:"Geist Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy-3)}
-.fee .was{margin-top:16px;font-size:14px;color:var(--faint);text-decoration:line-through}
+.fee .was{margin-top:16px;font-size:13.5px;color:var(--faint);text-decoration:line-through;line-height:1.35}
 .fee .now{font-family:"Playfair Display",Georgia,serif;font-size:clamp(28px,3vw,40px);color:var(--navy);line-height:1.05;margin-top:2px}
 .fee .sub{margin-top:8px;font-size:12.5px;color:var(--muted);font-weight:300}
 .after{margin-top:18px;max-width:68ch;font-size:14.5px;font-weight:300;color:var(--ink);line-height:1.6}
@@ -442,12 +442,17 @@ td.num{font-family:"Geist Mono",ui-monospace,monospace;font-size:12.5px;white-sp
           </article>
           <article class="fee">
             <div class="k" data-en="Paid fee">Fee de paid</div>
-            <div class="was" data-en="USD 6.5k minimum">USD 6,5k mínimo</div>
+            <div class="was" data-en="USD 6.5k base + % of spend">USD 6,5k basal + % inversión</div>
+            <div class="sub" data-en="List price. Returns after month 3.">Precio de lista. Vuelve después del mes 3.</div>
+          </article>
+          <article class="fee">
+            <div class="k">Studio + Digital + Martech</div>
+            <div class="was" data-en="Studio USD 3k minimum + rate per creative">Studio USD 3k mínimo + rate por creativo</div>
             <div class="now" data-en="USD 3.5k">USD 3,5k</div>
-            <div class="sub" data-en="3 months">3 meses</div>
+            <div class="sub" data-en="All three, for 3 months">Las tres juntas, 3 meses</div>
           </article>
         </div>
-        <p class="after" data-en="After month 3 the goal is for Escampa to be spending more than USD 70k. The fee then returns to the USD 6.5k minimum, plus a negotiated share of spend. Combined, it never exceeds 12% of media investment.">Después del mes 3 el objetivo es que Escampa invierta más de USD 70k. Ahí el fee vuelve al mínimo de USD 6,5k, más un porcentaje de la inversión. En total no supera el 12% de la inversión.</p>
+        <p class="after" data-en="After month 3 the goal is for Escampa to be spending more than USD 70k. The paid fee then returns to the USD 6.5k base, plus a negotiated share of spend. Combined, it never exceeds 12% of media investment.">Después del mes 3 el objetivo es que Escampa invierta más de USD 70k. Ahí el fee de paid vuelve a USD 6,5k basal, más un porcentaje de la inversión. En total no supera el 12% de la inversión.</p>
         <div class="foot">
           <div data-en="Escampa · growth roadmap · September 2026">Escampa · roadmap de growth · septiembre 2026</div>
         </div>
