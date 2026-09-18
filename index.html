@@ -159,12 +159,8 @@ h2.ex{
 .head,.lane{display:grid;grid-template-columns:var(--lane) 1fr}
 .head{position:sticky;top:0;z-index:3;background:var(--surface);border-bottom:1px solid var(--hair)}
 .corner{position:sticky;left:0;z-index:4;background:var(--surface);border-right:1px solid var(--hair);padding:10px 12px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);font-weight:700}
-.cols{display:flex;flex-direction:column;min-height:56px}
-.months{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--hair);height:26px}
-.month{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);padding:6px 8px 0;border-left:1px solid var(--hair)}
-.month:first-child{border-left:0}
-.month:nth-child(even){background:rgba(15,35,68,.04)}
-.ticks{display:grid;height:26px}
+.cols{display:flex;flex-direction:column;min-height:28px}
+.ticks{display:grid;height:28px}
 .tick{font-family:"Geist Mono",ui-monospace,monospace;font-size:10px;color:var(--faint);padding:6px 4px 0;border-left:1px solid var(--hair)}
 .tick:first-child{border-left:0}
 
@@ -570,11 +566,6 @@ function clip(t){
   const gap = 0.35;
   return { left: (cs / n) * 100 + gap, width: Math.max(((ce - cs) / n) * 100 - gap * 2, 0.9), cont: e > n + 0.01 };
 }
-function months(){
-  return state.lang === "en"
-    ? ["Sep 2026","Oct 2026","Nov 2026","Dec 2026 / Jan 2027"]
-    : ["Sep 2026","Oct 2026","Nov 2026","Dic 2026 / ene 2027"];
-}
 function ticks(){
   const out = [];
   for (let i = 0; i < COLS; i++) out.push("S" + (i + 1));
@@ -601,7 +592,6 @@ function renderGantt(){
   const n = cols();
   const tk = ticks();
   const shell = document.getElementById("gantt-shell");
-  const monthHtml = `<div class="months">${months().map(m => `<div class="month">${m}</div>`).join("")}</div>`;
   const tickHtml = `<div class="ticks" style="grid-template-columns:repeat(${n},1fr)">${tk.map(t => `<div class="tick">${t}</div>`).join("")}</div>`;
   const lanes = LANES.map(lane => {
     const packed = pack(TASKS.map(resolved).filter(t => t.lane === lane.id && visible(t)));
@@ -617,7 +607,7 @@ function renderGantt(){
     const gl = `<div class="gridlines" style="grid-template-columns:repeat(${n},1fr)">${"<span></span>".repeat(n)}</div>`;
     return `<div class="lane"><div class="lane-name">${lane.name}</div><div class="track" style="min-height:${h}px">${gl}${bars}</div></div>`;
   }).join("");
-  shell.innerHTML = `<div class="gantt"><div class="head"><div class="corner">${state.lang === "en" ? "Lane" : "Carril"}</div><div class="cols">${monthHtml}${tickHtml}</div></div>${lanes}</div>`;
+  shell.innerHTML = `<div class="gantt"><div class="head"><div class="corner">${state.lang === "en" ? "Lane" : "Carril"}</div><div class="cols">${tickHtml}</div></div>${lanes}</div>`;
   shell.querySelectorAll(".bar").forEach(b => b.addEventListener("click", () => openTask(b.dataset.id)));
   renderList();
 }
