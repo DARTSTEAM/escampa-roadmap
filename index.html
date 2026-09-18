@@ -159,9 +159,16 @@ h2.ex{
 .qrow .got b{display:block;font-family:"Playfair Display",Georgia,serif;font-size:clamp(22px,2.4vw,32px);font-weight:400;color:var(--navy);line-height:1.1}
 .qrow .got span{display:block;margin-top:6px;font-size:12.5px;font-weight:300;color:var(--muted)}
 .after{margin-top:18px;max-width:68ch;font-size:14.5px;font-weight:300;color:var(--ink);line-height:1.6}
+.squad{margin-top:22px}
+.squad .kicker{display:block;margin-bottom:10px}
+.squad-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--hair);border:1px solid var(--hair)}
+.squad-grid article{background:var(--surface);padding:16px 18px 18px}
+.squad-grid h3{font-size:13px;font-weight:600;color:var(--navy);margin:0 0 8px}
+.squad-grid ul{margin:0;padding:0 0 0 16px;font-size:13px;color:var(--muted);font-weight:300;line-height:1.45}
+.squad-grid li{margin:0 0 4px}
 @media(max-width:800px){
   .qhead{display:none}
-  .qrow{grid-template-columns:1fr}
+  .qrow,.squad-grid{grid-template-columns:1fr}
   .qrow > div{padding:10px 16px}
   .qrow .name{padding-top:16px}
   .deck{margin-left:0}
@@ -474,6 +481,32 @@ td.num{font-family:"Geist Mono",ui-monospace,monospace;font-size:12.5px;white-sp
             <div class="name" data-en="Paid media + Studio + martech maintenance (always on)">Paid media + Studio + mantenimiento martech (always on)</div>
             <div class="was" data-en="USD 6.5k + % of spend">USD 6,5k + % de inversión</div>
             <div class="got"><b data-en="USD 3.8k">USD 3,8k</b><span data-en="Per month. 1 TL + 2 analysts. Once spend is above USD 65k, the fee is USD 6.5k baseline + % of investment. The total never exceeds 12%.">Por mes. 1 TL + 2 analysts. Cuando el spend supera USD 65k, se activa el fee de USD 6,5k basal + % de inversión. El total no supera el 12%.</span></div>
+          </div>
+        </div>
+        <div class="squad">
+          <span class="kicker" data-en="Team on this 16-week sprint">Equipo en este sprint de 16 semanas</span>
+          <div class="squad-grid">
+            <article>
+              <h3>Martech</h3>
+              <ul>
+                <li data-en="1 tracking and alerts specialist">1 especialista de tracking y alertas</li>
+                <li data-en="1 dashboard specialist">1 especialista de dashboard</li>
+                <li data-en="1 warehouse specialist">1 especialista de warehouse</li>
+              </ul>
+            </article>
+            <article>
+              <h3>Paid</h3>
+              <ul>
+                <li data-en="1 senior growth account head">1 senior growth account head</li>
+                <li data-en="1 junior">1 junior</li>
+              </ul>
+            </article>
+            <article>
+              <h3>Studio</h3>
+              <ul>
+                <li data-en="1 static and video designer">1 diseñador de estáticos y video</li>
+              </ul>
+            </article>
           </div>
         </div>
         <div class="foot">
