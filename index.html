@@ -131,6 +131,24 @@ h2.ex{
 .brief p{font-size:12.5px;color:var(--muted);font-weight:300;line-height:1.4;margin:0}
 @media(max-width:800px){.brief{grid-template-columns:1fr;gap:4px}}
 
+.agency-top{display:flex;align-items:center;gap:14px;margin:4px 0 18px;flex-wrap:wrap}
+.agency-top .iso{height:36px;width:auto}
+.agency-top .word{height:26px;width:auto}
+.deck{
+  margin-left:auto;display:inline-flex;align-items:center;
+  border:1px solid var(--hair-2);background:var(--surface);
+  padding:8px 14px;font-size:12px;font-weight:600;color:var(--navy);text-decoration:none;
+}
+.deck:hover{background:var(--navy);color:#fff}
+.fees{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--hair);border:1px solid var(--hair)}
+.fee{background:var(--surface);padding:22px 20px 24px}
+.fee .k{font-family:"Geist Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy-3)}
+.fee .was{margin-top:16px;font-size:14px;color:var(--faint);text-decoration:line-through}
+.fee .now{font-family:"Playfair Display",Georgia,serif;font-size:clamp(28px,3vw,40px);color:var(--navy);line-height:1.05;margin-top:2px}
+.fee .sub{margin-top:8px;font-size:12.5px;color:var(--muted);font-weight:300}
+.after{margin-top:18px;max-width:68ch;font-size:14.5px;font-weight:300;color:var(--ink);line-height:1.6}
+@media(max-width:800px){.fees{grid-template-columns:1fr}.deck{margin-left:0}}
+
 /* Gantt */
 .toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-bottom:16px}
 .seg{display:inline-flex;border:1px solid var(--hair-2);background:var(--surface)}
@@ -300,6 +318,7 @@ td.num{font-family:"Geist Mono",ui-monospace,monospace;font-size:12.5px;white-sp
       <a href="#secuencia"><span class="n">02</span><span data-en="Stages">Etapas</span></a>
       <a href="#gantt"><span class="n">03</span>Gantt</a>
       <a href="#detalle"><span class="n">04</span><span data-en="Detail">Detalle</span></a>
+      <a href="#agencia"><span class="n">05</span><span data-en="Agency">Agencia</span></a>
     </nav>
   </aside>
 
@@ -403,6 +422,32 @@ td.num{font-family:"Geist Mono",ui-monospace,monospace;font-size:12.5px;white-sp
           <article class="brief"><h3 data-en="Scale scenarios">Escenarios de escala</h3><p data-en="Spend versus funding. Raise, hold, or cut. Incrementality tests.">Inversión vs fondeo. Subir, mantener o bajar. Tests de incrementalidad.</p></article>
           <article class="brief"><h3 data-en="Foundational KPIs set">KPIs fundacionales definidos</h3><p data-en="Targets with Escampa. Formulas and owners. Periodic review.">Metas con Escampa. Fórmulas y dueños. Revisión periódica.</p></article>
         </div>
+      </section>
+
+      <section id="agencia">
+        <span class="ex-n">Exhibit 4</span>
+        <h2 class="ex" data-en="Recommended agency">Agencia recomendada</h2>
+        <div class="agency-top">
+          <img class="iso" src="abn-isotipo.svg" alt="" width="36" height="36" />
+          <img class="word" src="abn-wordmark.svg" alt="ABN Group" />
+          <a class="deck" href="https://abn-group.web.app/" target="_blank" rel="noopener"><span data-en="See deck">Ver deck</span></a>
+        </div>
+        <p class="sec-lead" data-en="Growth clients. They cut the price to scale, then win together.">Clientes con potencial. Bajan el precio para escalar y después ganar juntos.</p>
+        <div class="fees">
+          <article class="fee">
+            <div class="k" data-en="Martech setup">Setup martech</div>
+            <div class="was">USD 20k</div>
+            <div class="now">USD 7–9k</div>
+            <div class="sub" data-en="One shot">Pago único</div>
+          </article>
+          <article class="fee">
+            <div class="k" data-en="Paid fee">Fee de paid</div>
+            <div class="was" data-en="USD 6.5k minimum">USD 6,5k mínimo</div>
+            <div class="now" data-en="USD 3.5k">USD 3,5k</div>
+            <div class="sub" data-en="3 months">3 meses</div>
+          </article>
+        </div>
+        <p class="after" data-en="After month 3 the goal is for Escampa to be spending more than USD 70k. The fee then returns to the USD 6.5k minimum, plus a negotiated share of spend. Combined, it never exceeds 12% of media investment.">Después del mes 3 el objetivo es que Escampa invierta más de USD 70k. Ahí el fee vuelve al mínimo de USD 6,5k, más un porcentaje de la inversión. En total no supera el 12% de la inversión.</p>
         <div class="foot">
           <div data-en="Escampa · growth roadmap · September 2026">Escampa · roadmap de growth · septiembre 2026</div>
         </div>
